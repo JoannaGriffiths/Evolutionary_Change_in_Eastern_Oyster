@@ -2,7 +2,7 @@
 library("dplyr")
 
 setwd("~/oyster_exome")
-annot <- read.delim("uniq_gene_list2", header = T)
+annot <- read.delim("Annotated_gene_list", header = T)
 setwd("~/exome_desktop/fet_sliding_window")
 
 AR2 <- read.delim("TX1-newpvalue_Manhattan")
