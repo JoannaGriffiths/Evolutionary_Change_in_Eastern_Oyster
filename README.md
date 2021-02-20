@@ -2,11 +2,11 @@
 
 ## PCoA Analysis
 
-*Script*: PCoA_oysters.R
+*Script*: PCoA_oysters.R, treatments_all.txt, treatments_larvae.txt, PCoA_larval_distances.txt
 
 *Input files*: all_pop_exact_cov20_200_new_rc_edit2
 
-*Description*: Script contains code for running a Principal Coordinate Analysis for all samples (parents and larvae) and larvae samples only. The script also contains adonis functions for testing significance of groups.
+*Description*: Script contains code for running a Principal Coordinate Analysis for all samples (parents and larvae) and larvae samples only. The script also contains adonis functions for testing significance of groups. The treatments file contains treatment info for all samples. The distance file contains Manhattan distances for larval samples pre- and post-low salinity selection from the PCoA plot.
 
 
 
