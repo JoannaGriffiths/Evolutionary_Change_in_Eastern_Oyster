@@ -1,93 +1,20 @@
-# https://www.r-graph-gallery.com/wp-content/uploads/2018/02/Manhattan_plot_in_R.html
-#https://www.rdocumentation.org/packages/qqman/versions/0.1.2/topics/manhattan
-
-library("qqman")
-
-setwd("~/Desktop/Oyster_exome")
-setwd("~/OneDrive/Documents/exome_desktop/fet_sliding_window")
-setwd("~/exome_desktop/")
-
-Fst_means_AR2 = read.table("AR2-SE_sig_edit3.fet")
-colnames(Fst_means_AR2) <- cbind("CHR","spp","gene","SNP","IDK1","IDK2","IDK3","P") #adding column names to dataframe
-
-Fst_means_AR3 = read.table("AR3-SE_sig_edit3.fet")
-colnames(Fst_means_AR3) <- cbind("CHR","spp","gene","SNP","IDK1","IDK2","IDK3","P") #adding column names to dataframe
-
-Fst_means_AR4 = read.table("AR4-SE_sig_edit3.fet")
-colnames(Fst_means_AR4) <- cbind("CHR","spp","gene","SNP","IDK1","IDK2","IDK3","P") #adding column names to dataframe
-
-Fst_means_AR5 = read.table("AR5-SE_sig_edit3.fet")
-colnames(Fst_means_AR5) <- cbind("CHR","spp","gene","SNP","IDK1","IDK2","IDK3","P") #adding column names to dataframe
-
-Fst_means_VB2 = read.table("VB2-SE_sig_edit3.fet")
-colnames(Fst_means_VB2) <- cbind("CHR","spp","gene","SNP","IDK1","IDK2","IDK3","P") #adding column names to dataframe
-
-Fst_means_VB3 = read.table("VB3-SE_sig_edit3.fet")
-colnames(Fst_means_VB3) <- cbind("CHR","spp","gene","SNP","IDK1","IDK2","IDK3","P") #adding column names to dataframe
 
 
-quartz()
-manhattan(Fst_means_AR2, chr="CHR", bp="SNP", snp="IDK3", p="P", suggestiveline = 3.48, logp = F)
-manhattan(Fst_means_AR3, chr="CHR", bp="SNP", snp="IDK3", p="P", suggestiveline = 3.48, logp = F)
-manhattan(Fst_means_AR4, chr="CHR", bp="SNP", snp="IDK3", p="P", suggestiveline = 3.48, logp = F)
-manhattan(Fst_means_AR5, chr="CHR", bp="SNP", snp="IDK3", p="P", suggestiveline = 3.48, logp = F)
-manhattan(Fst_means_VB2, chr="CHR", bp="SNP", snp="IDK3", p="P", suggestiveline = 3.48, logp = F)
-manhattan(Fst_means_VB3, chr="CHR", bp="SNP", snp="IDK3", p="P", suggestiveline = 3.48, logp = F)
-
-head(Fst_means$CHR)
-
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-
-Fet_means_AR2 = read.table("VB3-SE_w20000_cov10-200_Manhattan.fet", header = T)
-
-quartz()
-manhattan(Fet_means_AR2, chr="CHR", bp="BP_middle", snp="SNP", p="fet", suggestiveline = F, genomewideline = F, logp = F, ylim =c(0,300))
-
-Fet_means_AR2 = read.table("AR_VB_AVE-SE_w20000_cov10-200_Manhattan.fet", header = T)
-quartz()
-manhattan(Fet_means_AR2, chr="CHR", bp="BP_middle", snp="SNP", p="AR_ave", suggestiveline = F, genomewideline = F, logp = F, ylim =c(0,300))
-
-
-setwd("~/Desktop/Oyster_exome")
-
-Fet_means_AR2 = read.table("AR2-SE_final2.fet", header = T)
-
-quartz()
-manhattan(Fet_means_AR2, chr="CHR", bp="BP", snp="gene", p="fet", suggestiveline = F, genomewideline = F, logp = F, ylim =c(0,10))
-
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Results_VB3R2 = read.table("VB3R2-newpvalue_Manhattan", header = T)
-windows()
-manhattan(Results, chr="chr", bp="BP_position", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim=c(0,10), highlight=sig_list)
-
-###start here
 setwd("~/exome_desktop/fet_sliding_window")
-Results_VB3R2 = read.table("VB3R2-newpvalue_Manhattan", header = T) #LA3
-Results_VB3R1 = read.table("VB3R1-newpvalue_Manhattan", header = T) #LA2
-Results_VB2 = read.table("VB2-newpvalue_Manhattan", header = T) #LA1
-Results_AR2 = read.table("AR2-newpvalue_Manhattan", header = T) #TX1
-Results_AR3 = read.table("AR3-newpvalue_Manhattan", header = T) #TX2
-Results_AR4 = read.table("AR4-newpvalue_Manhattan", header = T) #TX3
-Results_AR5 = read.table("AR5-newpvalue_Manhattan", header = T) #TX4
-Results_SL1 = read.table("SL1-newpvalue_Manhattan", header = T) #LA4
-Results_SL2 = read.table("SL2-newpvalue_Manhattan", header = T) #LA5
-Results_SL3 = read.table("SL3-newpvalue_Manhattan", header = T) #LA6
-Results_SL3NS = read.table("SL3-NS-newpvalue_Manhattan", header = T) #LA6 NS
-#Results_SL4 = read.table("SL4-newpvalue_Manhattan", header = T)
-#Results_SL4-NS = read.table("SL4-NS-newpvalue_Manhattan", header = T)
 
-#sig_p = read.table("VB3R2-sigSNPs_forManhattan")
-#getting allele freq
-al_freq = read.delim("../SL1-SE_exact_rc_pop9_edit6", header=F)
-al_freq<- al_freq[,c(2,19)]
-colnames(al_freq) <- c('ID', 'freq')
-Results$ID <- paste(Results$Gene_Pos_start, Results$Gene_Pos_end, Results$SNP, sep="-")
-Results_alfreq <- merge(Results, al_freq, by='ID')
-Results_alfreq$pos_freq <- (Results_alfreq$freq * -1) +1
-#subset results to plot only sig allele freq changes
-sig_Results_alfreq <- subset(Results_alfreq, padj < 0.05) #20
+Results_VB3R2 = read.table("LA3-newpvalue_Manhattan", header = T) #LA3
+Results_VB3R1 = read.table("LA2-newpvalue_Manhattan", header = T) #LA2
+Results_VB2 = read.table("LA1-newpvalue_Manhattan", header = T) #LA1
+Results_AR2 = read.table("TX1-newpvalue_Manhattan", header = T) #TX1
+Results_AR3 = read.table("TX2-newpvalue_Manhattan", header = T) #TX2
+Results_AR4 = read.table("TX3-newpvalue_Manhattan", header = T) #TX3
+Results_AR5 = read.table("TX4-newpvalue_Manhattan", header = T) #TX4
+Results_SL1 = read.table("LA4-newpvalue_Manhattan", header = T) #LA4
+Results_SL2 = read.table("LA5-newpvalue_Manhattan", header = T) #LA5
+Results_SL3 = read.table("LA6-newpvalue_Manhattan", header = T) #LA6
+Results_SL3NS = read.table("LA6-NS-newpvalue_Manhattan", header = T) #LA6 NS
+
+##retrieve significant genes under selection in each cross
 
 #AR2
 AR2_sig <- subset(Results_AR2, padj < 0.05)
@@ -119,22 +46,12 @@ VB3_R2_sig <- subset(Results_VB3R2, padj < 0.05)
 VB3_R2_sig2 <- subset(VB3_R2_sig, gene=="22430406"| gene=="22430888"| gene=="22432300"| gene=="22434541"| gene=="22434694"| gene=="22434894"| gene=="22435092"| gene=="22436563"| gene=="22436855"| gene=="22439132"| gene=="22441293"| gene=="22442587"| gene=="22443236"| gene=="22446194"| gene=="22447067"| gene=="22448581"| gene=="22449029"| gene=="22450779"| gene=="22451612"| gene=="22451937"| gene=="22452045"| gene=="22452319"| gene=="22452520"| gene=="22455398"| gene=="22455778"| gene=="22455865"| gene=="22456272"| gene=="22456387"| gene=="22457334"| gene=="22457562"| gene=="22460685"| gene=="22462887"| gene=="22463410"| gene=="22464577"| gene=="22464888"| gene=="22464985"| gene=="22467005"| gene=="22468800"| gene=="22469890"| gene=="22470155"| gene=="22470793"| gene=="22473041"| gene=="22473715"| gene=="22480141"| gene=="22483345"| gene=="22484795"| gene=="22485000"| gene=="22486585"| gene=="22489168")
 sig_list_VB3R2 <- VB3_R2_sig2[,12]
 
-#plot all figures together, own axes
-windows() #I think karyoploteR needs to be turned off for this to work? being masked by it
-par(mfrow=c(3,2)) # 6 figures arranged in 3 rows and 2 columns
-manhattan(Results_AR2, chr="CHR", bp="SNP_Pos", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim =c(0,10), highlight = sig_list_AR2)
-manhattan(Results_AR4, chr="CHR", bp="SNP_Pos", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim =c(0,10), highlight = sig_list_AR4)
-manhattan(Results_AR5, chr="CHR", bp="SNP_Pos", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim =c(0,10), highlight = sig_list_AR5)
-manhattan(Results_SL1, chr="CHR", bp="SNP_Pos", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim =c(0,10), highlight = sig_list_SL1)
-manhattan(Results_SL2, chr="CHR", bp="SNP_Pos", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim =c(0,10), highlight = sig_list_SL2)
-manhattan(Results_VB3R2, chr="chr", bp="BP_position", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim =c(0,10), highlight = sig_list_VB3R2)
-
 
 #plot all figures with same x axis
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install("karyoploteR")
-library("karyoploteR") #this didn't work when I wasn't connected to internet, really frustrating...
+library("karyoploteR") #this didn't work when I wasn't connected to internet
 
 #help making GRanges object: https://web.mit.edu/~r/current/arch/i386_linux26/lib/R/library/GenomicRanges/html/makeGRangesFromDataFrame.html
 #https://kasperdanielhansen.github.io/genbioconductor/html/GenomicRanges_GRanges_Usage.html
@@ -219,6 +136,7 @@ VB3R2_sig <- subset(VB3R2_GRange, pvalue < 0.05)
 VB3R2_sig_snps <- subset(VB3R2_sig, Gene=="22430406"| Gene=="22430888"| Gene=="22432300"| Gene=="22434541"| Gene=="22434694"| Gene=="22434894"| Gene=="22435092"| Gene=="22436563"| Gene=="22436855"| Gene=="22439132"| Gene=="22441293"| Gene=="22442587"| Gene=="22443236"| Gene=="22446194"| Gene=="22447067"| Gene=="22448581"| Gene=="22449029"| Gene=="22450779"| Gene=="22451612"| Gene=="22451937"| Gene=="22452045"| Gene=="22452319"| Gene=="22452520"| Gene=="22455398"| Gene=="22455778"| Gene=="22455865"| Gene=="22456272"| Gene=="22456387"| Gene=="22457334"| Gene=="22457562"| Gene=="22460685"| Gene=="22462887"| Gene=="22463410"| Gene=="22464577"| Gene=="22464888"| Gene=="22464985"| Gene=="22467005"| Gene=="22468800"| Gene=="22469890"| Gene=="22470155"| Gene=="22470793"| Gene=="22473041"| Gene=="22473715"| Gene=="22480141"| Gene=="22483345"| Gene=="22484795"| Gene=="22485000"| Gene=="22486585"| Gene=="22489168")
 VB3R2_sig_snps
 
+#retreive genes under selection in more than one cross
 overlap1 <- subset(AR5_sig_snps, Gene=="22464577"| Gene=="22430406"|Gene=="22436855" |Gene=="22442587"|Gene=="22452045")
 overlap2 <- subset(AR4_sig_snps, Gene=="22482159"|Gene=="22469890")
 overlap3 <- subset(VB3R2_sig_snps, Gene=="22447067")
@@ -347,24 +265,4 @@ kpAddLabels(kp, labels = "-log(pvalue)", srt=90, label.margin = 0.04)
 kpRect(kp, data=reg1, y0=0, y1=1, col=NA, border="red", lwd=1)
 kpRect(kp, data=reg2, y0=0, y1=1, col=NA, border="red", lwd=1)
 kpRect(kp, data=reg3, y0=0, y1=1, col=NA, border="red", lwd=1)
-
-#kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(3,6), cex=0.5)
-#kpAxis(kp, ymin=0, ymax=kp$latest.plot$computed.values$ymax, tick.pos = c(0, seq_len(floor(kp$latest.plot$computed.values$ymax))), r0=autotrack(2,6), cex=0.5)
-
-
-#plot manhattan and allele freq on same graph
-windows()
-par(mfrow=c(3,2))
-manhattan(Results_AR2, chr="CHR", bp="SNP_Pos", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim =c(0,10), highlight = sig_list)
-par(new=T)
-manhattan(sig_Results_alfreq, chr="CHR", bp="SNP_Pos", snp="SNP_Pos", p="pos_freq", suggestiveline = F, genomewideline = F, logp = F, type = "p", axes = FALSE, bty = "n", xlab = "", ylab = "", col = 'red')
-axis(side=4, at = pretty(range(1,1.3)))
-mtext("z", side=4, line=3)
-
-####test to figure out locations of significant genes overlapping between crosses
-sig <- subset(Results, padj < 0.05)
-sig2 <- subset(sig, Gene=="22430406")
-sig_list <- sig2[,11]
-
-manhattan(Results, chr="CHR", bp="SNP_Pos", snp="Man_SNP", p="padj", suggestiveline = 1.3, genomewideline = F, logp = T, ylim =c(0,10), highlight = sig_list)
 
