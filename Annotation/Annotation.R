@@ -1,15 +1,11 @@
 
 library("dplyr")
 
-
-setwd("C:/Users/joann/Documents/oyster_exome/")
-annot <- read.delim("C:/Users/joann/Desktop/oyster_exome/uniq_gene_list2", header = T)
-
 setwd("~/oyster_exome")
 annot <- read.delim("uniq_gene_list2", header = T)
 setwd("~/exome_desktop/fet_sliding_window")
 
-AR2 <- read.delim("AR2-newpvalue_Manhattan")
+AR2 <- read.delim("TX1-newpvalue_Manhattan")
 AR2_sig <- subset(AR2, padj < 0.05)
 
 AR2_count <- AR2_sig %>% count(Gene) #count number of significant SNPs per gene
@@ -28,7 +24,7 @@ AR2_annot <- merge(AR2_count3, annot, by="Gene")
 
 
 
-AR3 <- read.delim("AR3-newpvalue_Manhattan")
+AR3 <- read.delim("TX2-newpvalue_Manhattan")
 AR3_sig <- subset(AR3, padj < 0.05)
 
 AR3_count <- AR3_sig %>% count(Gene)
@@ -46,7 +42,7 @@ AR3_annot <- merge(AR3_count3, annot, by="Gene")
 
 
 
-AR4 <- read.delim("AR4-newpvalue_Manhattan")
+AR4 <- read.delim("TX3-newpvalue_Manhattan")
 AR4_sig <- subset(AR4, padj < 0.05)
 
 AR4_count <- AR4_sig %>% count(Gene)
@@ -66,7 +62,7 @@ AR4_annot <- merge(AR4_count3, annot, by="Gene")
 
 
 
-AR5 <- read.delim("AR5-newpvalue_Manhattan")
+AR5 <- read.delim("TX4-newpvalue_Manhattan")
 AR5_sig <- subset(AR5, padj < 0.05)
 
 AR5_count <- AR5_sig %>% count(Gene)
@@ -86,7 +82,7 @@ AR5_annot <- merge(AR5_count3, annot, by="Gene")
 
 
 
-SL1 <- read.delim("SL1-newpvalue_Manhattan")
+SL1 <- read.delim("LA4-newpvalue_Manhattan")
 SL1_sig <- subset(SL1, padj < 0.05)
 
 SL1_count <- SL1_sig %>% count(Gene)
@@ -105,7 +101,7 @@ SL1_annot <- merge(SL1_count3, annot, by="Gene")
 
 
 
-SL2 <- read.delim("SL2-newpvalue_Manhattan")
+SL2 <- read.delim("LA5-newpvalue_Manhattan")
 SL2_sig <- subset(SL2, padj < 0.05)
 
 SL2_count <- SL2_sig %>% count(Gene)
@@ -124,7 +120,7 @@ SL2_annot <- merge(SL2_count3, annot, by="Gene")
 
 
 
-VB3R1 <- read.delim("VB3R1-newpvalue_Manhattan")
+VB3R1 <- read.delim("LA2-newpvalue_Manhattan")
 VB3R1_sig <- subset(VB3R1, padj < 0.05)
 
 VB3R1_count <- VB3R1_sig %>% count(Gene)
@@ -138,7 +134,7 @@ densities.qtiles <- SL1_count %>%
 hist(VB3R1_count$n) #nothing past count 2
 
 
-VB3R2 <- read.delim("VB3R2-newpvalue_Manhattan")
+VB3R2 <- read.delim("LA3-newpvalue_Manhattan")
 VB3R2_sig <- subset(VB3R2, padj < 0.05)
 
 VB3R2_count <- VB3R2_sig %>% count(gene)
@@ -156,7 +152,7 @@ colnames(VB3R2_count3) <- c("Gene", "VB3R2_n")
 
 VB3R2_annot <- merge(VB3R2_count3, annot, by="Gene")
 
-##############################chisq test
+##############################chisq test for source enrichment
 AR2_df <- data.frame(
   row.names=c("Fst", "exp", "she", "meng", "filler"),
   all=c(26,47,33, 30,42),
@@ -206,7 +202,7 @@ all_combined_df <- data.frame(
 chisq.test(all_combined_df) #not sig 0.14
 
 
-
+### Chi-square test for functional enrichment
 AR2_df <- data.frame(
   row.names=c("1chemical_def", "2immune", "3ion", "4ELF", "5FAA_meta", "6FA_hydro", "7ubiq", "8proteolysis", "9ROS", "10RNA_poly", "11FAA_protein", "12uncharacterized"),
   all=c(18,22,27,3,22,7,5,4,13,1,15,18),
@@ -257,7 +253,7 @@ chisq.test(all_combined_df) #not sig 0.69
 
 
 
-########## Hypergeometric test
+########## Hypergeometric test for genes under selection in multiple crosses
 '''
 x, q: vector of quantiles representing the number of white balls drawn without replacement 
           from an urn which contains both black and white balls.
