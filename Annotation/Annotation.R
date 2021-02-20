@@ -1,7 +1,7 @@
 
 library("dplyr")
 
-setwd("C:/Users/joann/OneDrive/Documents/exome_desktop/fet_sliding_window")
+
 setwd("C:/Users/joann/Documents/oyster_exome/")
 annot <- read.delim("C:/Users/joann/Desktop/oyster_exome/uniq_gene_list2", header = T)
 
