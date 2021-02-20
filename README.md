@@ -10,6 +10,7 @@
 
 
 
+
 ## Detecting increases in allele frequencies
 
 *Script*: Manhattan_plot.R 
@@ -17,6 +18,7 @@
 *Input files*: *CROSS*-newpvalue_Manhattan (e.g. LA1-newpvalue_Manhattan)
 
 *Description*: Script contains code for plotting Manhattan plots for crosses that had genes under selection and crosses that did not.
+
 
 
 
