@@ -1,4 +1,4 @@
-##For start and end point comparisons for each family.
+##For start and end point comparisons for each family. The code below is an example for one of these comparisons (cross TX1)
 #exact allele frequency files were created using the popoolation2 script snp-frequency-diff.pl
 grep "pop" AR2-SE_exact_rc > AR2-SE_exact_rc_pop #we want only allele frequencies identified between the start and end points and not the reference chromosome
 
