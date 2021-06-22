@@ -1,4 +1,4 @@
-# Scripts and data from Griffiths, J.S. et al. (in review) Experimental evolution reveals standing genetic variation for salinity tolerance in the eastern oyster.
+# Scripts and data from Griffiths, J.S. et al. (in review) Evolutionary change in the Eastern oyster, *Crassostrea virginica*, following low salinity exposure.
 
 ## PCoA Analysis
 
