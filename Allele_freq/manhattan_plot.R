@@ -1,198 +1,460 @@
 
 
-setwd("~/exome_desktop/fet_sliding_window")
+library("dplyr")
+setwd("~/LSU/Research/Oyster Exome Capture Experiment")
 
-Results_VB3R2 = read.table("LA3-newpvalue_Manhattan", header = T) #LA3
-Results_VB3R1 = read.table("LA2-newpvalue_Manhattan", header = T) #LA2
-Results_VB2 = read.table("LA1-newpvalue_Manhattan", header = T) #LA1
-Results_AR2 = read.table("TX1-newpvalue_Manhattan", header = T) #TX1
-Results_AR3 = read.table("TX2-newpvalue_Manhattan", header = T) #TX2
-Results_AR4 = read.table("TX3-newpvalue_Manhattan", header = T) #TX3
-Results_AR5 = read.table("TX4-newpvalue_Manhattan", header = T) #TX4
-Results_SL1 = read.table("LA4-newpvalue_Manhattan", header = T) #LA4
-Results_SL2 = read.table("LA5-newpvalue_Manhattan", header = T) #LA5
-Results_SL3 = read.table("LA6-newpvalue_Manhattan", header = T) #LA6
-Results_SL3NS = read.table("LA6-NS-newpvalue_Manhattan", header = T) #LA6 NS
+### read in annotation file for each gene
+annot_final2 <- read.delim("Supplemental_Table1", header = T)
 
-##retrieve significant genes under selection in each cross
-
-#AR2
-AR2_sig <- subset(Results_AR2, padj < 0.05)
-AR2_sig2 <- subset(AR2_sig, Gene=="22430406"| Gene=="22436694" | Gene=="22436855"| Gene=="22445237"| Gene=="22452549"| Gene=="22458334"| Gene=="22460042"| Gene=="22465298"| Gene=="22478344"| Gene=="22482159"| Gene=="22483747")
-sig_list_AR2 <- AR2_sig2[,11]
-
-#AR4
-AR4_sig <- subset(Results_AR4, padj < 0.05)
-AR4_sig2 <- subset(AR4_sig, Gene=="22466570"| Gene=="22469890" | Gene=="22477495"| Gene=="22482159")
-sig_list_AR4 <- AR4_sig2[,11]
-
-#AR5
-AR5_sig <- subset(Results_AR5, padj < 0.05)
-AR5_sig2 <- subset(AR5_sig, Gene=="22430406"| Gene=="22431296" | Gene=="22436490"| Gene=="22436855"| Gene=="22442587"| Gene=="22452045"| Gene=="22464577"| Gene=="22487619")
-sig_list_AR5 <- AR5_sig2[,11]
-
-#SL1
-SL1_sig <- subset(Results_SL1, padj < 0.05)
-SL1_sig2 <- subset(SL1_sig, Gene=="22447067"| Gene=="22480648")
-sig_list_SL1 <- SL1_sig2[,11]
-
-#SL2
-SL2_sig <- subset(Results_SL2, padj < 0.05)
-SL2_sig2 <- subset(SL2_sig, Gene=="22440183"| Gene=="22449816")
-sig_list_SL2 <- SL2_sig2[,11]
-
-#VB3_R2
-VB3_R2_sig <- subset(Results_VB3R2, padj < 0.05)
-VB3_R2_sig2 <- subset(VB3_R2_sig, gene=="22430406"| gene=="22430888"| gene=="22432300"| gene=="22434541"| gene=="22434694"| gene=="22434894"| gene=="22435092"| gene=="22436563"| gene=="22436855"| gene=="22439132"| gene=="22441293"| gene=="22442587"| gene=="22443236"| gene=="22446194"| gene=="22447067"| gene=="22448581"| gene=="22449029"| gene=="22450779"| gene=="22451612"| gene=="22451937"| gene=="22452045"| gene=="22452319"| gene=="22452520"| gene=="22455398"| gene=="22455778"| gene=="22455865"| gene=="22456272"| gene=="22456387"| gene=="22457334"| gene=="22457562"| gene=="22460685"| gene=="22462887"| gene=="22463410"| gene=="22464577"| gene=="22464888"| gene=="22464985"| gene=="22467005"| gene=="22468800"| gene=="22469890"| gene=="22470155"| gene=="22470793"| gene=="22473041"| gene=="22473715"| gene=="22480141"| gene=="22483345"| gene=="22484795"| gene=="22485000"| gene=="22486585"| gene=="22489168")
-sig_list_VB3R2 <- VB3_R2_sig2[,12]
+###
 
 
+
+#####AR2
+AR2 <- read.delim("AR2-SE_sig_edit5.fet", header = F)
+colnames(AR2) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+AR2$SNP_pos <- AR2$Start + AR2$SNP
+AR2$Punlog <- (1/(10^(AR2$p_value)))
+AR2$padj <- p.adjust(AR2$Punlog, method = 'fdr')
+
+AR2_sig <- subset(AR2, padj < 0.05)
+write.table(AR2_sig, file = "AR2_sig_SNPs", row.names=FALSE, quote=FALSE, sep = "\t")
+
+AR2_count <- AR2_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(AR2_count$n)
+densities.qtiles <- AR2_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(AR2_count$n)
+AR2_count3 <- subset(AR2_count, n>=3)
+colnames(AR2_count3) <- c("Gene", "AR2_n")
+
+AR2_annot <- merge(AR2_count3, annot_final2, by="Gene")
+
+
+#####AR3 (none sig)
+AR3 <- read.delim("AR3-SE_sig_edit5.fet", header = F)
+colnames(AR3) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+AR3$SNP_pos <- AR3$Start + AR3$SNP
+AR3$Punlog <- (1/(10^(AR3$p_value)))
+AR3$padj <- p.adjust(AR3$Punlog, method = 'fdr')
+
+AR3_sig <- subset(AR3, padj < 0.05)
+write.table(AR3_sig, file = "AR3_sig_SNPs_forSeqMonk", row.names=FALSE, quote=FALSE)
+
+AR3_count <- AR3_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(AR3_count$n)
+densities.qtiles <- AR3_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(AR3_count$n)
+AR3_count3 <- subset(AR3_count, n>=3)
+colnames(AR3_count3) <- c("Gene", "AR3_n")
+
+AR3_annot <- merge(AR3_count3, annot_final2, by="Gene")
+
+
+#####AR4
+AR4 <- read.delim("AR4-SE_sig_edit5.fet", header = F)
+colnames(AR4) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+AR4$SNP_pos <- AR4$Start + AR4$SNP
+AR4$Punlog <- (1/(10^(AR4$p_value)))
+AR4$padj <- p.adjust(AR4$Punlog, method = 'fdr')
+
+AR4_sig <- subset(AR4, padj < 0.05)
+write.table(AR4_sig, file = "AR4_sig_SNPs", row.names=FALSE, quote=FALSE, sep = "\t")
+
+AR4_count <- AR4_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(AR4_count$n)
+densities.qtiles <- AR4_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(AR4_count$n)
+AR4_count3 <- subset(AR4_count, n>=3)
+colnames(AR4_count3) <- c("Gene", "AR4_n")
+
+AR4_annot <- merge(AR4_count3, annot_final2, by="Gene")
+
+
+#####AR5
+AR5 <- read.delim("AR5-SE_sig_edit5.fet", header = F)
+colnames(AR5) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+AR5$SNP_pos <- AR5$Start + AR5$SNP
+AR5$Punlog <- (1/(10^(AR5$p_value)))
+AR5$padj <- p.adjust(AR5$Punlog, method = 'fdr')
+
+AR5_sig <- subset(AR5, padj < 0.05)
+write.table(AR5_sig, file = "AR5_sig_SNPs", row.names=FALSE, quote=FALSE, sep = "\t")
+
+AR5_count <- AR5_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(AR5_count$n)
+densities.qtiles <- AR5_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(AR5_count$n)
+AR5_count3 <- subset(AR5_count, n>=3)
+colnames(AR5_count3) <- c("Gene", "AR5_n")
+
+AR5_annot <- merge(AR5_count3, annot_final2, by="Gene")
+
+
+#####SL1
+SL1 <- read.delim("SL1-SE_sig_edit5.fet", header = F)
+colnames(SL1) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+SL1$SNP_pos <- SL1$Start + SL1$SNP
+SL1$Punlog <- (1/(10^(SL1$p_value)))
+SL1$padj <- p.adjust(SL1$Punlog, method = 'fdr')
+
+SL1_sig <- subset(SL1, padj < 0.05)
+write.table(SL1_sig, file = "SL1_sig_SNPs", row.names=FALSE, quote=FALSE, sep = "\t")
+
+SL1_count <- SL1_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(SL1_count$n)
+densities.qtiles <- SL1_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(SL1_count$n)
+SL1_count3 <- subset(SL1_count, n>=3)
+colnames(SL1_count3) <- c("Gene", "SL1_n")
+
+SL1_annot <- merge(SL1_count3, annot_final2, by="Gene")
+
+
+#####SL2 (none significant)
+SL2 <- read.delim("SL2-SE_sig_edit5.fet", header = F)
+colnames(SL2) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+SL2$SNP_pos <- SL2$Start + SL2$SNP
+SL2$Punlog <- (1/(10^(SL2$p_value)))
+SL2$padj <- p.adjust(SL2$Punlog, method = 'fdr')
+
+SL2_sig <- subset(SL2, padj < 0.05)
+write.csv2(SL2_sig, file = "SL2_sig_SNPs_forSeqMonk", row.names=FALSE, quote=FALSE)
+
+SL2_count <- SL2_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(SL2_count$n)
+densities.qtiles <- SL2_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(SL2_count$n)
+SL2_count3 <- subset(SL2_count, n>=3)
+colnames(SL2_count3) <- c("Gene", "SL2_n")
+
+SL2_annot <- merge(SL2_count3, annot_final2, by="Gene")
+
+
+#####SL3 (none significant)
+SL3 <- read.delim("SL3-SE_sig_edit5.fet", header = F)
+colnames(SL3) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+SL3$SNP_pos <- SL3$Start + SL3$SNP
+SL3$Punlog <- (1/(10^(SL3$p_value)))
+SL3$padj <- p.adjust(SL3$Punlog, method = 'fdr')
+
+SL3_sig <- subset(SL3, padj < 0.05)
+
+
+SL3_count <- SL3_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(SL3_count$n)
+densities.qtiles <- SL3_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(SL3_count$n)
+SL3_count3 <- subset(SL3_count, n>=3)
+colnames(SL3_count3) <- c("Gene", "SL3_n")
+
+SL3_annot <- merge(SL3_count3, annot_final2, by="Gene")
+
+
+#####SLNS3 (none significant)
+SLNS3 <- read.delim("SLNS3-SE_sig_edit5.fet", header = F)
+colnames(SLNS3) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+SLNS3$SNP_pos <- SLNS3$Start + SLNS3$SNP
+SLNS3$Punlog <- (1/(10^(SLNS3$p_value)))
+SLNS3$padj <- p.adjust(SLNS3$Punlog, method = 'fdr')
+
+SLNS3_sig <- subset(SLNS3, padj < 0.05)
+
+SLNS3_count <- SLNS3_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(SLNS3_count$n)
+densities.qtiles <- SLNS3_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(SLNS3_count$n)
+SLNS3_count3 <- subset(SLNS3_count, n>=10)
+colnames(SLNS3_count3) <- c("Gene", "SLNS3_n")
+
+SLNS3_annot <- merge(SLNS3_count3, annot_final2, by="Gene")
+
+
+#####VB2
+VB2 <- read.delim("VB2-SE_sig_edit5.fet", header = F)
+colnames(VB2) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+VB2$SNP_pos <- VB2$Start + VB2$SNP
+VB2$Punlog <- (1/(10^(VB2$p_value)))
+VB2$padj <- p.adjust(VB2$Punlog, method = 'fdr')
+
+VB2_sig <- subset(VB2, padj < 0.05)
+write.table(VB2_sig, file = "VB2_sig_SNPs", row.names=FALSE, quote=FALSE, sep = "\t")
+
+VB2_count <- VB2_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(VB2_count$n)
+densities.qtiles <- VB2_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(VB2_count$n)
+VB2_count3 <- subset(VB2_count, n>=3)
+colnames(VB2_count3) <- c("Gene", "VB2_n")
+
+VB2_annot <- merge(VB2_count3, annot_final2, by="Gene")
+
+
+#####VB3
+VB3 <- read.delim("VB3-SE_sig_edit5.fet", header = F)
+colnames(VB3) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+VB3$SNP_pos <- VB3$Start + VB3$SNP
+VB3$Punlog <- (1/(10^(VB3$p_value)))
+VB3$padj <- p.adjust(VB3$Punlog, method = 'fdr')
+
+VB3_sig <- subset(VB3, padj < 0.05)
+write.table(VB3_sig, file = "VB3_sig_SNPs", row.names=FALSE, quote=FALSE, sep = "\t")
+
+VB3_count <- VB3_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(VB3_count$n)
+densities.qtiles <- VB3_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(VB3_count$n)
+VB3_count3 <- subset(VB3_count, n>=3)
+colnames(VB3_count3) <- c("Gene", "VB3_n")
+
+VB3_annot <- merge(VB3_count3, annot_final2, by="Gene")
+
+
+#####VB3_R2
+VB3_R2 <- read.delim("VB3_R2-SE_sig_edit5.fet", header = F)
+colnames(VB3_R2) <- cbind("Gene","Species","CHR","Start","End","SNP","IDK1","IDK2", "coverage", "p_value") #adding column names to dataframe
+
+VB3_R2$SNP_pos <- VB3_R2$Start + VB3_R2$SNP
+VB3_R2$Punlog <- (1/(10^(VB3_R2$p_value)))
+VB3_R2$padj <- p.adjust(VB3_R2$Punlog, method = 'fdr')
+
+VB3_R2_sig <- subset(VB3_R2, padj < 0.05)
+write.table(VB3_R2_sig, file = "VB3_R2_sig_SNPs", row.names=FALSE, quote=FALSE, sep = "\t")
+
+VB3_R2_count <- VB3_R2_sig %>% count(Gene) #count number of significant SNPs per gene
+
+mean(VB3_R2_count$n)
+densities.qtiles <- VB3_R2_count %>%
+  summarise(q05 = quantile(n, 0.025, na.rm=TRUE),
+            q50 = quantile(n, 0.5, na.rm=TRUE),
+            q95 = quantile(n, 0.975, na.rm=TRUE))
+
+windows()
+hist(VB3_R2_count$n)
+VB3_R2_count3 <- subset(VB3_R2_count, n>=3)
+colnames(VB3_R2_count3) <- c("Gene", "VB3_R2_n")
+
+VB3_R2_annot <- merge(VB3_R2_count3, annot_final2, by="Gene")
+
+
+
+###################
 #plot all figures with same x axis
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install("karyoploteR")
-library("karyoploteR") #this didn't work when I wasn't connected to internet
+library("karyoploteR") #this didn't work when I wasn't connected to internet, really frustrating...
 
 #help making GRanges object: https://web.mit.edu/~r/current/arch/i386_linux26/lib/R/library/GenomicRanges/html/makeGRangesFromDataFrame.html
 #https://kasperdanielhansen.github.io/genbioconductor/html/GenomicRanges_GRanges_Usage.html
-AR2_GRange <- makeGRangesFromDataFrame(Results_AR2, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
-AR2_GRange$pvalue <- Results_AR2$padj
-AR2_GRange$Gene <- as.numeric(Results_AR2$Gene)
+AR2_GRange <- makeGRangesFromDataFrame(AR2, seqnames.field="CHR", start.field="SNP_pos", end.field="SNP_pos")
+AR2_GRange$pvalue <- AR2$padj
+AR2_GRange$Gene <- as.numeric(AR2$Gene)
 AR2_GRange
 
-AR4_GRange <- makeGRangesFromDataFrame(Results_AR4, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
-AR4_GRange$pvalue <- Results_AR4$padj
-AR4_GRange$Gene <- as.numeric(Results_AR4$Gene)
+AR4_GRange <- makeGRangesFromDataFrame(AR4, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
+AR4_GRange$pvalue <- AR4$padj
+AR4_GRange$Gene <- as.numeric(AR4$Gene)
 AR4_GRange
 
-AR5_GRange <- makeGRangesFromDataFrame(Results_AR5, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
-AR5_GRange$pvalue <- Results_AR5$padj
-AR5_GRange$Gene <- as.numeric(Results_AR5$Gene)
+AR5_GRange <- makeGRangesFromDataFrame(AR5, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
+AR5_GRange$pvalue <- AR5$padj
+AR5_GRange$Gene <- as.numeric(AR5$Gene)
 AR5_GRange
 
-SL1_GRange <- makeGRangesFromDataFrame(Results_SL1, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
-SL1_GRange$pvalue <- Results_SL1$padj
-SL1_GRange$Gene <- as.numeric(Results_SL1$Gene)
+SL1_GRange <- makeGRangesFromDataFrame(SL1, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
+SL1_GRange$pvalue <- SL1$padj
+SL1_GRange$Gene <- as.numeric(SL1$Gene)
 SL1_GRange
 
-SL2_GRange <- makeGRangesFromDataFrame(Results_SL2, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
-SL2_GRange$pvalue <- Results_SL2$padj
-SL2_GRange$Gene <- as.numeric(Results_SL2$Gene)
-SL2_GRange
-
-VB3R2_GRange <- makeGRangesFromDataFrame(Results_VB3R2, seqnames.field="chr", start.field="BP_position", end.field="BP_position")
-VB3R2_GRange$pvalue <- Results_VB3R2$padj
-VB3R2_GRange$Gene <- as.numeric(Results_VB3R2$gene)
-VB3R2_GRange
-
-SL3_GRange <- makeGRangesFromDataFrame(Results_SL3, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
-SL3_GRange$pvalue <- Results_SL3$padj
-SL3_GRange$Gene <- as.numeric(Results_SL3$Gene)
-
-SL3NS_GRange <- makeGRangesFromDataFrame(Results_SL3NS, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
-SL3NS_GRange$pvalue <- Results_SL3NS$padj
-SL3NS_GRange$Gene <- as.numeric(Results_SL3NS$Gene)
-
-AR3_GRange <- makeGRangesFromDataFrame(Results_AR3, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
-AR3_GRange$pvalue <- Results_AR3$padj
-AR3_GRange$Gene <- as.numeric(Results_AR3$Gene)
-AR3_GRange
-
-VB3R1_GRange <- makeGRangesFromDataFrame(Results_VB3R1, seqnames.field="CHR", start.field="SNP_pos", end.field="SNP_pos")
-VB3R1_GRange$pvalue <- Results_VB3R1$padj
-VB3R1_GRange$Gene <- as.numeric(Results_VB3R1$Gene)
-VB3R1_GRange
-
-VB2_GRange <- makeGRangesFromDataFrame(Results_VB2, seqnames.field="CHR", start.field="SNP_pos", end.field="SNP_pos")
-VB2_GRange$pvalue <- Results_VB2$padj
-VB2_GRange$Gene <- as.numeric(Results_VB2$Gene)
+VB2_GRange <- makeGRangesFromDataFrame(VB2, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
+VB2_GRange$pvalue <- VB2$padj
+VB2_GRange$Gene <- as.numeric(VB2$Gene)
 VB2_GRange
 
+VB3R2_GRange <- makeGRangesFromDataFrame(VB3_R2, seqnames.field="chr", start.field="SNP_pos", end.field="SNP_pos")
+VB3R2_GRange$pvalue <- VB3_R2$padj
+VB3R2_GRange$Gene <- as.numeric(VB3_R2$Gene)
+VB3R2_GRange
+
+SL3_GRange <- makeGRangesFromDataFrame(SL3, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
+SL3_GRange$pvalue <- SL3$padj
+SL3_GRange$Gene <- as.numeric(SL3$Gene)
+
+SL3NS_GRange <- makeGRangesFromDataFrame(SLNS3, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
+SL3NS_GRange$pvalue <- SLNS3$padj
+SL3NS_GRange$Gene <- as.numeric(SLNS3$Gene)
+
+AR3_GRange <- makeGRangesFromDataFrame(AR3, seqnames.field="CHR", start.field="SNP_Pos", end.field="SNP_Pos")
+AR3_GRange$pvalue <- AR3$padj
+AR3_GRange$Gene <- as.numeric(AR3$Gene)
+AR3_GRange
+
+VB3R1_GRange <- makeGRangesFromDataFrame(VB3, seqnames.field="CHR", start.field="SNP_pos", end.field="SNP_pos")
+VB3R1_GRange$pvalue <- VB3$padj
+VB3R1_GRange$Gene <- as.numeric(VB3$Gene)
+VB3R1_GRange
+
+SL2_GRange <- makeGRangesFromDataFrame(SL2, seqnames.field="CHR", start.field="SNP_pos", end.field="SNP_pos")
+SL2_GRange$pvalue <- SL2$padj
+SL2_GRange$Gene <- as.numeric(SL2$Gene)
+SL2_GRange
+
 #create custom genome: https://bernatgel.github.io/karyoploter_tutorial//Tutorial/CustomGenomes/CustomGenomes.html
-c.virginica.genome <- toGRanges("cvirginica_exome_genome.txt")
+c.virginica.genome <- toGRanges("~/exome_desktop/fet_sliding_window/cvirginica_exome_genome.txt")
 #plotting help: https://rdrr.io/bioc/karyoploteR/man/kpPlotManhattan.html
 
 AR2_sig <- subset(AR2_GRange, pvalue < 0.05)
-AR2_sig_snps <- subset(AR2_sig, Gene=="22430406"| Gene=="22436694" | Gene=="22436855"| Gene=="22445237"| Gene=="22452549"| Gene=="22458334"| Gene=="22460042"| Gene=="22465298"| Gene=="22478344"| Gene=="22482159"| Gene=="22483747")
+AR2_sig_snps <- subset(AR2_sig, Gene=="22436855"| Gene=="22452549" | Gene=="22458334"| Gene=="22476633")
 AR2_sig_snps
 
 AR4_sig <- subset(AR4_GRange, pvalue < 0.05)
-AR4_sig_snps <- subset(AR4_sig, Gene=="22466570"| Gene=="22469890" | Gene=="22477495"| Gene=="22482159")
+AR4_sig_snps <- subset(AR4_sig, Gene=="22446194"| Gene=="22460685" | Gene=="22464985"| Gene=="22473715")
 AR4_sig_snps
 
 AR5_sig <- subset(AR5_GRange, pvalue < 0.05)
-AR5_sig_snps <- subset(AR5_sig, Gene=="22430406"| Gene=="22431296" | Gene=="22436490"| Gene=="22436855"| Gene=="22442587"| Gene=="22452045"| Gene=="22464577"| Gene=="22487619")
+AR5_sig_snps <- subset(AR5_sig, Gene=="22430406"| Gene=="22430468" | Gene=="22430888"| Gene=="22436272"| Gene=="22439003"| Gene=="22447067"| Gene=="22450779"| Gene=="22455865"| Gene=="22456387"| Gene=="22457562"| Gene=="22458334"| Gene=="22464985"| Gene=="22477495")
 AR5_sig_snps
 
 SL1_sig <- subset(SL1_GRange, pvalue < 0.05)
-SL1_sig_snps <- subset(SL1_sig, Gene=="22447067"| Gene=="22480648")
+SL1_sig_snps <- subset(SL1_sig, Gene=="22447067"| Gene=="22477509")
 SL1_sig_snps
 
-SL2_sig <- subset(SL2_GRange, pvalue < 0.05)
-SL2_sig_snps <- subset(SL2_sig, Gene=="22440183"| Gene=="22449816")
-SL2_sig_snps
+VB2_sig <- subset(VB2_GRange, pvalue < 0.05)
+VB2_sig_snps <- subset(VB2_sig, Gene=="22441408"| Gene=="22460202" | Gene=="22467005")
+VB2_sig_snps
+
+VB3R1_sig <- subset(VB3R1_GRange, pvalue < 0.05)
+VB3R1_sig_snps <- subset(VB3R1_sig, Gene=="22460042")
+VB3R1_sig_snps
 
 VB3R2_sig <- subset(VB3R2_GRange, pvalue < 0.05)
-VB3R2_sig_snps <- subset(VB3R2_sig, Gene=="22430406"| Gene=="22430888"| Gene=="22432300"| Gene=="22434541"| Gene=="22434694"| Gene=="22434894"| Gene=="22435092"| Gene=="22436563"| Gene=="22436855"| Gene=="22439132"| Gene=="22441293"| Gene=="22442587"| Gene=="22443236"| Gene=="22446194"| Gene=="22447067"| Gene=="22448581"| Gene=="22449029"| Gene=="22450779"| Gene=="22451612"| Gene=="22451937"| Gene=="22452045"| Gene=="22452319"| Gene=="22452520"| Gene=="22455398"| Gene=="22455778"| Gene=="22455865"| Gene=="22456272"| Gene=="22456387"| Gene=="22457334"| Gene=="22457562"| Gene=="22460685"| Gene=="22462887"| Gene=="22463410"| Gene=="22464577"| Gene=="22464888"| Gene=="22464985"| Gene=="22467005"| Gene=="22468800"| Gene=="22469890"| Gene=="22470155"| Gene=="22470793"| Gene=="22473041"| Gene=="22473715"| Gene=="22480141"| Gene=="22483345"| Gene=="22484795"| Gene=="22485000"| Gene=="22486585"| Gene=="22489168")
+VB3R2_sig_snps <- subset(VB3R2_sig, Gene=="22430406"| Gene=="22430888"| Gene=="22434940"| Gene=="22436694"| Gene=="22436855"| Gene=="22437155"| Gene=="22439132"| Gene=="22443236"| Gene=="22446194"| Gene=="22447067"| Gene=="22449029"| Gene=="22452045"| Gene=="22452419"| Gene=="22452520"| Gene=="22454425"| Gene=="22455778"| Gene=="22455865"| Gene=="22456272"| Gene=="22458334"| Gene=="22464888"| Gene=="22464985"| Gene=="22465298"| Gene=="22467005"| Gene=="22473715"| Gene=="22475843"| Gene=="22477495"| Gene=="22479437"| Gene=="22484795"| Gene=="22486585"| Gene=="22486637")
 VB3R2_sig_snps
 
-#retreive genes under selection in more than one cross
-overlap1 <- subset(AR5_sig_snps, Gene=="22464577"| Gene=="22430406"|Gene=="22436855" |Gene=="22442587"|Gene=="22452045")
-overlap2 <- subset(AR4_sig_snps, Gene=="22482159"|Gene=="22469890")
-overlap3 <- subset(VB3R2_sig_snps, Gene=="22447067")
+overlap1 <- subset(AR5_sig_snps, Gene=="22430406"| Gene=="22430888"|Gene=="22447067" |Gene=="22455865"|Gene=="22458334")
+overlap2 <- subset(VB3R2_sig_snps, Gene=="22436855" |Gene=="22446194"|Gene=="22467005"|Gene=="22477495")
+overlap3 <- subset(AR5_sig_snps, Gene=="22464985")
+overlap4 <- subset(AR4_sig_snps, Gene=="22473715")
 reg1 <- extendRegions(overlap1, 30e5, 30e5)
 reg2 <- extendRegions(overlap2, 30e5, 30e5)
-reg3 <- extendRegions(overlap3, 30e5, 30e5)
+reg3 <- extendRegions(overlap3, 50e5, 50e5)
+#reg4 <- extendRegions(overlap4, 50e5, 50e5)
+
 
 ##Manhattan plots for non-significant crosses
 grDevices::windows()
 kp <- plotKaryotype(genome = c.virginica.genome, plot.type = 4, cex=0.8)
-kp <- kpPlotManhattan(kp, data=VB2_GRange, pval = VB2_GRange$pvalue, 
+
+kp <- kpPlotManhattan(kp, data=SL2_GRange, pval = SL2_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
-                      r0=autotrack(5,5),
+                      r0=autotrack(4,4),
                       genomewideline =0,
                       ymin=0, ymax=8
 )
 
-kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(5,5), cex=0.5)
-kpAddLabels(kp, labels = "LA1", side="right", r0=autotrack(5,5), cex=0.8)
-kp <- kpPlotManhattan(kp, data=VB3R1_GRange, pval = VB3R1_GRange$pvalue, 
-                      suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
-                      points.cex = 0.5, 
-                      r0=autotrack(4,5),
-                      genomewideline =0,
-                      ymin=0, ymax=8
-)
-kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(4,5), cex=0.5)
-kpAddLabels(kp, labels = "LA2", side="right", r0=autotrack(4,5), cex=0.8)
+kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(4,4), cex=0.5)
+kpAddLabels(kp, labels = "LA5", side="right", r0=autotrack(4,4), cex=0.8)
+
 kp <- kpPlotManhattan(kp, data=SL3_GRange, pval = SL3_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
-                      r0=autotrack(3,5),
+                      r0=autotrack(3,4),
                       genomewideline =0,
                       ymin=0, ymax=8
-                      )
-kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(3,5), cex=0.5)
-kpAddLabels(kp, labels = "LA6", side="right", r0=autotrack(3,5), cex=0.8)
+)
+kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(3,4), cex=0.5)
+kpAddLabels(kp, labels = "LA6", side="right", r0=autotrack(3,4), cex=0.8)
+
 kp <- kpPlotManhattan(kp, data=SL3NS_GRange, pval = SL3NS_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
-                      r0=autotrack(2,5),
+                      r0=autotrack(2,4),
                       genomewideline =0,
                       ymin=0, ymax=8
 )
-kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(2,5), cex=0.5)
-kpAddLabels(kp, labels = "LA6 NS",side="right", r0=autotrack(2,5), cex=0.8)
+kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(2,4), cex=0.5)
+kpAddLabels(kp, labels = "LA6 NS",side="right", r0=autotrack(2,4), cex=0.8)
+
 kp <- kpPlotManhattan(kp, data=AR3_GRange, pval = AR3_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
-                      r0=autotrack(1,5),
+                      r0=autotrack(1,4),
                       genomewideline =0,
                       ymin=0, ymax=8
 )
-kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(1,5), cex=0.5)
-kpAddLabels(kp, labels = "TX2", side="right", r0=autotrack(1,5), cex=0.8)
+kpAxis(kp, ymin=0, ymax=8, tick.pos = c(2,4,6), r0=autotrack(1,4), cex=0.5)
+kpAddLabels(kp, labels = "TX2", side="right", r0=autotrack(1,4), cex=0.8)
 kpAddLabels(kp, labels = "-log(pvalue)", srt=90, label.margin = 0.04)
 
 
@@ -201,68 +463,86 @@ kpAddLabels(kp, labels = "-log(pvalue)", srt=90, label.margin = 0.04)
 ##Manhattan plots for significant crosses
 grDevices::windows()
 kp <- plotKaryotype(genome = c.virginica.genome, plot.type = 4, cex=0.8)
+
+kp <- kpPlotManhattan(kp, data=VB3R1_GRange, pval = VB3R1_GRange$pvalue, 
+                      suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
+                      points.cex = 0.5, 
+                      highlight = VB3R1_sig_snps,
+                      r0=autotrack(6,7),
+                      genomewideline =0,
+                      ymin=0, ymax=10
+)
+kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(6,7), cex=0.5)
+kpAddLabels(kp, labels = "LA2", side="right", r0=autotrack(6,7), cex=0.8)
+
 kp <- kpPlotManhattan(kp, data=AR2_GRange, pval = AR2_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
                       highlight = AR2_sig_snps,
-                      r0=autotrack(3,6),
+                      r0=autotrack(3,7),
                       genomewideline =0,
                       ymin=0, ymax=10
 )
-kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(3,6), cex=0.5)
-kpAddLabels(kp, labels = "TX1", side="right", r0=autotrack(3,6), cex=0.8)
+kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(3,7), cex=0.5)
+kpAddLabels(kp, labels = "TX1", side="right", r0=autotrack(3,7), cex=0.8)
+
 kp <- kpPlotManhattan(kp, data=AR4_GRange, pval = AR4_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
                       highlight = AR4_sig_snps,
-                      r0=autotrack(2,6),
+                      r0=autotrack(2,7),
                       genomewideline =0,
                       ymin=0, ymax=10
 )
-kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(2,6), cex=0.5)
-kpAddLabels(kp, labels = "TX3",side="right", r0=autotrack(2,6), cex=0.8)
+kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(2,7), cex=0.5)
+kpAddLabels(kp, labels = "TX3",side="right", r0=autotrack(2,7), cex=0.8)
+
 kp <- kpPlotManhattan(kp, data=AR5_GRange, pval = AR5_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
                       highlight = AR5_sig_snps,
-                      r0=autotrack(1,6),
+                      r0=autotrack(1,7),
                       genomewideline =0,
                       ymin=0, ymax=10
 )
-kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(1,6), cex=0.5)
-kpAddLabels(kp, labels = "TX4", side="right", r0=autotrack(1,6), cex=0.8)
+kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(1,7), cex=0.5)
+kpAddLabels(kp, labels = "TX4", side="right", r0=autotrack(1,7), cex=0.8)
+
 kp <- kpPlotManhattan(kp, data=SL1_GRange, pval = SL1_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
                       highlight = SL1_sig_snps,
-                      r0=autotrack(5,6),
+                      r0=autotrack(4,7),
                       genomewideline =0,
                       ymin=0, ymax=10
 )
-kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(5,6), cex=0.5)
-kpAddLabels(kp, labels = "LA4", side="right", r0=autotrack(5,6), cex=0.8)
-kp <- kpPlotManhattan(kp, data=SL2_GRange, pval = SL2_GRange$pvalue, 
+kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(4,7), cex=0.5)
+kpAddLabels(kp, labels = "LA4", side="right", r0=autotrack(4,7), cex=0.8)
+
+kp <- kpPlotManhattan(kp, data=VB2_GRange, pval = VB2_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
-                      highlight = SL2_sig_snps,
-                      r0=autotrack(4,6),
+                      highlight = VB2_sig_snps,
+                      r0=autotrack(7,7),
                       genomewideline =0,
                       ymin=0, ymax=10
 )
-kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(4,6), cex=0.5)
-kpAddLabels(kp, labels = "LA5", side="right", r0=autotrack(4,6), cex=0.8)
+kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(7,7), cex=0.5)
+kpAddLabels(kp, labels = "LA1", side="right", r0=autotrack(7,7), cex=0.8)
+
 kp <- kpPlotManhattan(kp, data=VB3R2_GRange, pval = VB3R2_GRange$pvalue, 
                       suggestive.col="blue", suggestive.lwd = 1.3, suggestiveline = 1.3, 
                       points.cex = 0.5, 
                       highlight = VB3R2_sig_snps,
-                      r0=autotrack(6,6),
+                      r0=autotrack(5,7),
                       genomewideline =0,
                       ymin=0, ymax=10
 )
-kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(6,6), cex=0.5)
-kpAddLabels(kp, labels = "LA3", side="right", r0=autotrack(6,6), cex=0.8)
+kpAxis(kp, ymin=0, ymax=10, tick.pos = c(2,4,6,8), r0=autotrack(5,7), cex=0.5)
+kpAddLabels(kp, labels = "LA3", side="right", r0=autotrack(5,7), cex=0.8)
 kpAddLabels(kp, labels = "-log(pvalue)", srt=90, label.margin = 0.04)
 kpRect(kp, data=reg1, y0=0, y1=1, col=NA, border="red", lwd=1)
 kpRect(kp, data=reg2, y0=0, y1=1, col=NA, border="red", lwd=1)
 kpRect(kp, data=reg3, y0=0, y1=1, col=NA, border="red", lwd=1)
+
 
