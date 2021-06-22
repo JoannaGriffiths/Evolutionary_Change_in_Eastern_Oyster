@@ -1,223 +1,121 @@
 
 
 
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Overlap = read.delim("AR2-geneoverlap.txt", header = T)
-Overlap$Merge_ID <- paste(Overlap$Chromosome, Overlap$Start, sep="-")
-Overlap2 <- Overlap[,c(12, 13, 15)]
+setwd("~/LSU/Research/Oyster Exome Capture Experiment/fet/June18_2021")
+AR2_start_Overlap = read.delim("Annotated Probe Report for AR2_start.txt", header = T)
+AR2_sig_Overlap = read.delim("Annotated Probe Report for AR2_sig_SNPs.txt", header = T)
 
-newpvalue = read.delim("AR2-newpvalue_SeqMonk", header = T)
-newpvalue$Merge_ID <- paste(newpvalue$CHR, newpvalue$SNP_Pos, sep="-")
+length(which(AR2_start_Overlap$Feature.Orientation == "overlapping")) #2016
+length(which(AR2_start_Overlap$Feature.Orientation == "upstream")) #299
+length(which(AR2_start_Overlap$Feature.Orientation == "downstream")) #357
 
-newpvalue_overlap <- merge(newpvalue, Overlap2, by='Merge_ID')
-
-sig_newpvalue_overlap <- subset(newpvalue_overlap, padj < 0.05) #92
-length(which(sig_newpvalue_overlap$Orientation == "overlapping")) #74
-length(which(sig_newpvalue_overlap$Orientation == "upstream")) #9
-length(which(sig_newpvalue_overlap$Orientation == "downstream")) #9
-
-sig_gene_overlap <- subset(sig_newpvalue_overlap, Orientation == "overlapping")
-write.table(sig_gene_overlap, file = "AR2-sig_gene_overlap.txt", sep = "\t", quote=F)
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Overlap = read.delim("AR3-geneoverlap.txt", header = T)
-Overlap$Merge_ID <- paste(Overlap$Chromosome, Overlap$Start, sep="-")
-Overlap2 <- Overlap[,c(12, 13, 16)]
-
-newpvalue = read.delim("AR3-newpvalue_SeqMonk", header = T)
-newpvalue$Merge_ID <- paste(newpvalue$CHR, newpvalue$SNP_Pos, sep="-")
-
-newpvalue_overlap <- merge(newpvalue, Overlap2, by='Merge_ID')
-
-newpvalue_overlap$padj <- as.numeric(as.character(newpvalue_overlap$padj))
-sig_newpvalue_overlap <- subset(newpvalue_overlap, padj < 0.05) #10
-length(which(sig_newpvalue_overlap$Orientation == "overlapping")) #6
-length(which(sig_newpvalue_overlap$Orientation == "upstream")) #3
-length(which(sig_newpvalue_overlap$Orientation == "downstream")) #1
-
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Overlap = read.delim("AR4-geneoverlap.txt", header = T)
-Overlap$Merge_ID <- paste(Overlap$Chromosome, Overlap$Start, sep="-")
-Overlap2 <- Overlap[,c(12, 13, 17)]
-
-newpvalue = read.delim("AR4-newpvalue_SeqMonk", header = T)
-newpvalue$Merge_ID <- paste(newpvalue$CHR, newpvalue$SNP_Pos, sep="-")
-
-newpvalue_overlap <- merge(newpvalue, Overlap2, by='Merge_ID')
-
-newpvalue_overlap$padj <- as.numeric(as.character(newpvalue_overlap$padj))
-sig_newpvalue_overlap <- subset(newpvalue_overlap, padj < 0.05) #60
-length(which(sig_newpvalue_overlap$Orientation == "overlapping")) #41
-length(which(sig_newpvalue_overlap$Orientation == "upstream")) #6
-length(which(sig_newpvalue_overlap$Orientation == "downstream")) #13
-
-
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Overlap = read.delim("AR5-geneoverlap.txt", header = T)
-Overlap$Merge_ID <- paste(Overlap$Chromosome, Overlap$Start, sep="-")
-Overlap2 <- Overlap[,c(12, 13, 18)]
-
-newpvalue = read.delim("AR5-newpvalue_SeqMonk", header = T)
-newpvalue$Merge_ID <- paste(newpvalue$CHR, newpvalue$SNP_Pos, sep="-")
-
-newpvalue_overlap <- merge(newpvalue, Overlap2, by='Merge_ID')
-
-newpvalue_overlap$padj <- as.numeric(as.character(newpvalue_overlap$padj))
-sig_newpvalue_overlap <- subset(newpvalue_overlap, padj < 0.05) #103
-length(which(sig_newpvalue_overlap$Orientation == "overlapping")) #67
-length(which(sig_newpvalue_overlap$Orientation == "upstream")) #20
-length(which(sig_newpvalue_overlap$Orientation == "downstream")) #16
-
-
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Overlap = read.delim("SL1-geneoverlap.txt", header = T)
-Overlap$Merge_ID <- paste(Overlap$Chromosome, Overlap$Start, sep="-")
-Overlap2 <- Overlap[,c(12, 13, 19)]
-
-newpvalue = read.delim("SL1-newpvalue_SeqMonk", header = T)
-newpvalue$Merge_ID <- paste(newpvalue$CHR, newpvalue$SNP_Pos, sep="-")
-
-newpvalue_overlap <- merge(newpvalue, Overlap2, by='Merge_ID')
-
-newpvalue_overlap$padj <- as.numeric(as.character(newpvalue_overlap$padj))
-sig_newpvalue_overlap <- subset(newpvalue_overlap, padj < 0.05) #24
-length(which(sig_newpvalue_overlap$Orientation == "overlapping")) #13
-length(which(sig_newpvalue_overlap$Orientation == "upstream")) #6
-length(which(sig_newpvalue_overlap$Orientation == "downstream")) #5
-
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Overlap = read.delim("SL2-geneoverlap.txt", header = T)
-Overlap$Merge_ID <- paste(Overlap$Chromosome, Overlap$Start, sep="-")
-Overlap2 <- Overlap[,c(12, 13, 19)]
-
-newpvalue = read.delim("SL2-newpvalue_SeqMonk", header = T)
-newpvalue$Merge_ID <- paste(newpvalue$CHR, newpvalue$SNP_Pos, sep="-")
-
-newpvalue_overlap <- merge(newpvalue, Overlap2, by='Merge_ID')
-
-sig_newpvalue_overlap <- subset(newpvalue_overlap, padj < 0.05) #1
-length(which(sig_newpvalue_overlap$Orientation == "overlapping")) #0
-length(which(sig_newpvalue_overlap$Orientation == "upstream")) #1
-length(which(sig_newpvalue_overlap$Orientation == "downstream")) #0
-
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Overlap = read.delim("VB3R1-geneoverlap.txt", header = T)
-Overlap$Merge_ID <- paste(Overlap$Chromosome, Overlap$Start, sep="-")
-Overlap2 <- Overlap[,c(12, 13, 16)]
-
-newpvalue = read.delim("VB3R1-newpvalue_SeqMonk", header = T)
-newpvalue$Merge_ID <- paste(newpvalue$CHR, newpvalue$SNP_Pos, sep="-")
-
-newpvalue_overlap <- merge(newpvalue, Overlap2, by='Merge_ID')
-
-sig_newpvalue_overlap <- subset(newpvalue_overlap, padj < 0.05) #20
-length(which(sig_newpvalue_overlap$Orientation == "overlapping")) #12
-length(which(sig_newpvalue_overlap$Orientation == "upstream")) #5
-length(which(sig_newpvalue_overlap$Orientation == "downstream")) #3
-
-
-
-
-setwd("~/Desktop/Oyster_exome/fet_sliding_window")
-Overlap = read.delim("VB3R2-geneoverlap.txt", header = T)
-Overlap$Merge_ID <- paste(Overlap$Chromosome, Overlap$Start, sep="-")
-Overlap2 <- Overlap[,c(12, 13, 17)]
-
-newpvalue = read.delim("VB3R2-newpvalue_SeqMonk", header = T)
-newpvalue$Merge_ID <- paste(newpvalue$chr, newpvalue$BP_position, sep="-")
-
-newpvalue_overlap <- merge(newpvalue, Overlap2, by='Merge_ID')
-
-newpvalue_overlap$padj <- as.numeric(as.character(newpvalue_overlap$padj))
-sig_newpvalue_overlap <- subset(newpvalue_overlap, padj < 0.05) #339
-length(which(sig_newpvalue_overlap$Orientation == "overlapping")) #225
-length(which(sig_newpvalue_overlap$Orientation == "upstream")) #70
-length(which(sig_newpvalue_overlap$Orientation == "downstream")) #44
-
-
-setwd("C:/Users/joann/Desktop/oyster_exome")
-AR2_SNPs <- read.delim("AR2-start_SNPs.txt", header = T)
-length(which(AR2_SNPs$Orientation == "overlapping")) #4219
-length(which(AR2_SNPs$Orientation == "upstream")) #692
-length(which(AR2_SNPs$Orientation == "downstream")) #816
-
-AR3_SNPs <- read.delim("AR3-start_SNPs.txt", header = T)
-length(which(AR3_SNPs$Orientation == "overlapping")) #4281
-length(which(AR3_SNPs$Orientation == "upstream")) #1345
-length(which(AR3_SNPs$Orientation == "downstream")) #1234
-
-AR4_SNPs <- read.delim("AR4-start_SNPs.txt", header = T)
-length(which(AR4_SNPs$Orientation == "overlapping")) #5704
-length(which(AR4_SNPs$Orientation == "upstream")) #1196
-length(which(AR4_SNPs$Orientation == "downstream")) #1275
-
-AR5_SNPs <- read.delim("AR5-start_SNPs.txt", header = T)
-length(which(AR5_SNPs$Orientation == "overlapping")) #7877
-length(which(AR5_SNPs$Orientation == "upstream")) #1794
-length(which(AR5_SNPs$Orientation == "downstream")) #1724
-
-SL1_SNPs <- read.delim("SL1-start_SNPs.txt", header = T)
-length(which(SL1_SNPs$Orientation == "overlapping")) #3474
-length(which(SL1_SNPs$Orientation == "upstream")) #843
-length(which(SL1_SNPs$Orientation == "downstream")) #943
-
-SL2_SNPs <- read.delim("SL2-start_SNPs.txt", header = T)
-length(which(SL2_SNPs$Orientation == "overlapping")) #3206
-length(which(SL2_SNPs$Orientation == "upstream")) #820
-length(which(SL2_SNPs$Orientation == "downstream")) #823
-
-VB2_SNPs <- read.delim("VB2-start_SNPs.txt", header = T)
-length(which(VB2_SNPs$Orientation == "overlapping")) #5749
-length(which(VB2_SNPs$Orientation == "upstream")) #1475
-length(which(VB2_SNPs$Orientation == "downstream")) #1484
-
-VB3R1_SNPs <- read.delim("VB3-R1-start_SNPs.txt", header = T)
-length(which(VB3R1_SNPs$Orientation == "overlapping")) #5722
-length(which(VB3R1_SNPs$Orientation == "upstream")) #1193
-length(which(VB3R1_SNPs$Orientation == "downstream")) #1149
-
-VB3R2_SNPs <- read.delim("VB3-R2-start_SNPs.txt", header = T)
-length(which(VB3R2_SNPs$Orientation == "overlapping")) #4219
-length(which(VB3R2_SNPs$Orientation == "upstream")) #692
-length(which(VB3R2_SNPs$Orientation == "downstream")) #816
+length(which(AR2_sig_Overlap$Feature.Orientation == "overlapping")) #30
+length(which(AR2_sig_Overlap$Feature.Orientation == "upstream")) #5
+length(which(AR2_sig_Overlap$Feature.Orientation == "downstream")) #10
 
 AR2_df <- data.frame(
-  start=c(74,9,9),
-  end=c(4219,682,816))
-chisq.test(AR2_df) #not sig 0.33
+  start=c(2016,299,357),
+  sig=c(30,5,10))
+chisq.test(AR2_df) #not sig 0.22
 
-AR3_df <- data.frame(
-  start=c(6,3,1),
-  end=c(4281,1345,1234))
-chisq.test(AR3_df) #not sig 0.63
+
+AR4_start_Overlap = read.delim("Annotated Probe Report for AR4_start.txt", header = T)
+AR4_sig_Overlap = read.delim("Annotated Probe Report for AR4_sig_SNPs.txt", header = T)
+
+length(which(AR4_start_Overlap$Feature.Orientation == "overlapping")) #2714
+length(which(AR4_start_Overlap$Feature.Orientation == "upstream")) #572
+length(which(AR4_start_Overlap$Feature.Orientation == "downstream")) #527
+
+length(which(AR4_sig_Overlap$Feature.Orientation == "overlapping")) #31
+length(which(AR4_sig_Overlap$Feature.Orientation == "upstream")) #5
+length(which(AR4_sig_Overlap$Feature.Orientation == "downstream")) #3
 
 AR4_df <- data.frame(
-  start=c(41,6,13),
-  end=c(5704,1196,1275))
-chisq.test(AR4_df) #not sig 0.32
+  start=c(2714,572,527),
+  sig=c(31,5,3))
+chisq.test(AR4_df) #not sig 0.46
+
+
+AR5_start_Overlap = read.delim("Annotated Probe Report for AR5_start.txt", header = T)
+AR5_sig_Overlap = read.delim("Annotated Probe Report for AR5_sig_SNPs.txt", header = T)
+
+length(which(AR5_start_Overlap$Feature.Orientation == "overlapping")) #3896
+length(which(AR5_start_Overlap$Feature.Orientation == "upstream")) #925
+length(which(AR5_start_Overlap$Feature.Orientation == "downstream")) #802
+
+length(which(AR5_sig_Overlap$Feature.Orientation == "overlapping")) #79
+length(which(AR5_sig_Overlap$Feature.Orientation == "upstream")) #17
+length(which(AR5_sig_Overlap$Feature.Orientation == "downstream")) #19
 
 AR5_df <- data.frame(
-  start=c(67,20,16),
-  end=c(7877,1794,1724))
-chisq.test(AR5_df) #not sig 0.56
+  start=c(3896,925,802),
+  sig=c(79,17,19))
+chisq.test(AR5_df) #not sig 0.74
+
+
+SL1_start_Overlap = read.delim("Annotated Probe Report for SL1_start.txt", header = T)
+SL1_sig_Overlap = read.delim("Annotated Probe Report for SL1_sig_SNPs.txt", header = T)
+
+length(which(SL1_start_Overlap$Feature.Orientation == "overlapping")) #1456
+length(which(SL1_start_Overlap$Feature.Orientation == "upstream")) #360
+length(which(SL1_start_Overlap$Feature.Orientation == "downstream")) #354
+
+length(which(SL1_sig_Overlap$Feature.Orientation == "overlapping")) #8
+length(which(SL1_sig_Overlap$Feature.Orientation == "upstream")) #5
+length(which(SL1_sig_Overlap$Feature.Orientation == "downstream")) #10
 
 SL1_df <- data.frame(
-  start=c(13,6,5),
-  end=c(3474,843,943))
-chisq.test(SL1_df) #not sig 0.40
+  start=c(1456,360,354), #0.671, 0.1658, 0.1631
+  sig=c(8,5,10)) #0.3478, 0.217, 0.4347
+chisq.test(SL1_df) #sig 0.0008936
 
-SL2_df <- data.frame(
-  start=c(0,1,0),
-  end=c(3206,820,823))
-chisq.test(SL2_df) #not sig 0.086
+
+VB2_start_Overlap = read.delim("Annotated Probe Report for VB2_start.txt", header = T)
+VB2_sig_Overlap = read.delim("Annotated Probe Report for VB2_sig_SNPs.txt", header = T)
+
+length(which(VB2_start_Overlap$Feature.Orientation == "overlapping")) #2947
+length(which(VB2_start_Overlap$Feature.Orientation == "upstream")) #701
+length(which(VB2_start_Overlap$Feature.Orientation == "downstream")) #665
+
+length(which(VB2_sig_Overlap$Feature.Orientation == "overlapping")) #32
+length(which(VB2_sig_Overlap$Feature.Orientation == "upstream")) #3
+length(which(VB2_sig_Overlap$Feature.Orientation == "downstream")) #1
 
 VB2_df <- data.frame(
-  start=c(0,1,0),
-  end=c(5749,1475,1484))
-chisq.test(VB2_df) #not sig 0.086
+  start=c(2947,701,665), #0.6832, 0.1625, 0.1542
+  sig=c(32,3,1)) #0.88, 0.0833, 0.0277 more likely to be found within gene body
+chisq.test(VB2_df) #sig 0.0258
 
+
+VB3_start_Overlap = read.delim("Annotated Probe Report for VB3_start.txt", header = T)
+VB3_sig_Overlap = read.delim("Annotated Probe Report for VB3_sig_SNPs.txt", header = T)
+
+length(which(VB3_start_Overlap$Feature.Orientation == "overlapping")) #2736
+length(which(VB3_start_Overlap$Feature.Orientation == "upstream")) #540
+length(which(VB3_start_Overlap$Feature.Orientation == "downstream")) #472
+
+length(which(VB3_sig_Overlap$Feature.Orientation == "overlapping")) #22
+length(which(VB3_sig_Overlap$Feature.Orientation == "upstream")) #5
+length(which(VB3_sig_Overlap$Feature.Orientation == "downstream")) #4
+
+VB3_df <- data.frame(
+  start=c(2736,540,472),
+  sig=c(22,5,4))
+chisq.test(VB3_df) #not sig 0.95
+
+
+VB3_R2_start_Overlap = read.delim("Annotated Probe Report for VB3_R2_start.txt", header = T)
+VB3_R2_sig_Overlap = read.delim("Annotated Probe Report for VB3_R2_sig_SNPs.txt", header = T)
+
+length(which(VB3_R2_start_Overlap$Feature.Orientation == "overlapping")) #1960
+length(which(VB3_R2_start_Overlap$Feature.Orientation == "upstream")) #511
+length(which(VB3_R2_start_Overlap$Feature.Orientation == "downstream")) #437
+
+length(which(VB3_R2_sig_Overlap$Feature.Orientation == "overlapping")) #176
+length(which(VB3_R2_sig_Overlap$Feature.Orientation == "upstream")) #31
+length(which(VB3_R2_sig_Overlap$Feature.Orientation == "downstream")) #32
+
+VB3_R2_df <- data.frame(
+  start=c(1960,511,437),
+  sig=c(176,31,32))
+chisq.test(VB3_R2_df) #not sig 0.11
