@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#PBS -q single
+#PBS -A hpc_kelly_20_1
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=48:00:00
+#PBS -o /work/jgrif61/Oysters/output_files
+#PBS -j oe
+#PBS -M jgrif61@lsu.edu
+#PBS -N trimgalore1_SE
+
+date
+
+cd /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR10_S13_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR13_S29_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR15_S7_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR1_S23_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR29_S19_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR2-E_S17_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR2-S_S28_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR35_S24_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR3-E_S25_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR3-S_S22_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR4-E_S27_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR4-S_S9_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR55_S8_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR5-E_S14_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR5-S_S26_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 AR9_S10_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 VB12_S21_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 VB14_S18_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 VB2-E_S15_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 VB2-S_S20_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 VB3-E_S12_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 VB3_S16_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 VB3-S_S30_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+#trim_galore --length 40 --max_n 1 VB69_S11_L003_R1_001.fastq.gz -o /work/jgrif61/Oysters/raw_reads
+
+cd /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL17_USPD16103237-D701-AK1682_H3FLNBBXX_L7_1.fq.gz SL17_USPD16103237-D701-AK1682_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL18_USPD16103237-D701-AK1780_H3FLNBBXX_L7_1.fq.gz SL18_USPD16103237-D701-AK1780_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL1E_USPD16103237-D702-AK1681_H3FLNBBXX_L7_1.fq.gz SL1E_USPD16103237-D702-AK1681_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL1S_USPD16103237-D702-AK1680_H3FLNBBXX_L7_1.fq.gz SL1S_USPD16103237-D702-AK1680_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL28_USPD16103237-D701-AK1543_H3FLNBBXX_L7_1.fq.gz SL28_USPD16103237-D701-AK1543_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL29_USPD16103237-D701-AK1544_H3FLNBBXX_L7_1.fq.gz SL29_USPD16103237-D701-AK1544_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL2E_USPD16103237-D702-AK1780_H3FLNBBXX_L7_1.fq.gz SL2E_USPD16103237-D702-AK1780_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL2S_USPD16103237-D702-AK1682_H3FLNBBXX_L7_1.fq.gz SL2S_USPD16103237-D702-AK1682_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL3E_USPD16103237-D702-AK1544_H3FLNBBXX_L7_1.fq.gz SL3E_USPD16103237-D702-AK1544_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL3S_USPD16103237-D702-AK1543_H3FLNBBXX_L7_1.fq.gz SL3S_USPD16103237-D702-AK1543_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL3_USPD16103237-D701-AK1680_H3FLNBBXX_L7_1.fq.gz SL3_USPD16103237-D701-AK1680_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL4_USPD16103237-D701-AK1681_H3FLNBBXX_L7_1.fq.gz SL4_USPD16103237-D701-AK1681_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SLNS3E_USPD16103237-D702-AK1545_H3FLNBBXX_L7_1.fq.gz SLNS3E_USPD16103237-D702-AK1545_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 VB2_USPD16103237-DY0088-AK1780_H3FLNBBXX_L7_1.fq.gz VB2_USPD16103237-DY0088-AK1780_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+trim_galore --paired --retain_unpaired --length 40 --max_n 1 VB3E_USPD16103237-DY0088-AK1544_H3FLNBBXX_L7_1.fq.gz VB3E_USPD16103237-DY0088-AK1544_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+trim_galore --paired --retain_unpaired --length 40 --max_n 1 VB3S_USPD16103237-DY0088-AK1543_H3FLNBBXX_L7_1.fq.gz VB3S_USPD16103237-DY0088-AK1543_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 VB8_USPD16103237-DY0088-AK1682_H3FLNBBXX_L7_1.fq.gz VB8_USPD16103237-DY0088-AK1682_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+
+#missing file SL4S, so this entire family can't be used
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL4S_USPD16103237-D702-AK1546_H3FLNBBXX_L7_1.fq.gz SL4S_USPD16103237-D702-AK1546_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL4E_USPD16103237-DY0088-AK1680_H3FLNBBXX_L7_1.fq.gz SL4E_USPD16103237-DY0088-AK1680_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SLNS4E_USPD16103237-DY0088-AK1681_H3FLNBBXX_L7_1.fq.gz SLNS4E_USPD16103237-DY0088-AK1681_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL56_USPD16103237-D701-AK1545_H3FLNBBXX_L7_1.fq.gz SL56_USPD16103237-D701-AK1545_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+#trim_galore --paired --retain_unpaired --length 40 --max_n 1 SL58_USPD16103237-D701-AK1546_H3FLNBBXX_L7_1.fq.gz SL58_USPD16103237-D701-AK1546_H3FLNBBXX_L7_2.fq.gz -o /work/jgrif61/Oysters/raw_reads_r2
+
+
+date
+exit 0

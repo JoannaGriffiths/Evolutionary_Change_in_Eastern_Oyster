@@ -1,0 +1,92 @@
+#!/bin/bash
+
+#PBS -q workq
+#PBS -A hpc_kelly_21_1
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=24:00:00
+#PBS -o /work/jgrif61/Oysters/output_files
+#PBS -j oe
+#PBS -M jgrif61@lsu.edu
+#PBS -N Oyster_fst
+
+date
+
+cd /work/jgrif61/Oysters/seq_files
+
+#Convert the synchronized file into a gene-based synchronized file
+#perl /work/jgrif61/Tigs/popoolation2_1201/create-genewise-sync.pl --input all_perl.sync --output all_genes.sync
+
+#Calculate the Fst for every gene
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl --min-count 6 --min-coverage 50 --max-coverage 200 --pool-size 500 --min-covered-fraction 0.0 --window-size 1000000 --step-size 1000000 --input all_genes.sync --output all_genewise.fst
+
+#Calculate Fst for sliding window
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl --input all_perl_oyster.sync --output all_oyster_eachSNP.fst --suppress-noninformative --min-count 5 --min-coverage 5 --max-coverage 200 --min-covered-fraction 1 --window-size 1 --step-size 1 --pool-size 100
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl --input all_out_PE.sync --output all_PE_w10000_step10000.fst --suppress-noninformative --min-count 2 --min-coverage 5 --max-coverage 200 --min-covered-fraction 0.2 --window-size 10000 --step-size 10000 --pool-size 100
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl  --input AR2-SE_perl_oyster.sync --output AR2-SE_sliding.fst --min-count 6 --min-coverage 20 --max-coverage 200 --min-covered-fraction 0.2 --window-size 10000 --step-size 10000 --pool-size 100
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl  --input AR3-SE_perl_oyster.sync --output AR3-SE_sliding.fst --min-count 6 --min-coverage 20 --max-coverage 200 --min-covered-fraction 0.2 --window-size 10000 --step-size 10000 --pool-size 100
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl  --input AR4-SE_perl_oyster.sync --output AR4-SE_sliding.fst --min-count 6 --min-coverage 20 --max-coverage 200 --min-covered-fraction 0.2 --window-size 10000 --step-size 10000 --pool-size 100 
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl  --input AR5-SE_perl_oyster.sync --output AR5-SE_sliding.fst --min-count 6 --min-coverage 20 --max-coverage 200 --min-covered-fraction 0.2 --window-size 10000 --step-size 10000 --pool-size 100
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl  --input VB2-SE_perl_oyster.sync --output VB2-SE_sliding.fst --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative --min-covered-fraction 0.2 --window-size 10000 --step-size 10000 --pool-size 100
+#perl /work/jgrif61/Tigs/popoolation2_1201/fst-sliding.pl  --input VB3-SE_perl_oyster.sync --output VB3-SE_sliding.fst --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative --min-covered-fraction 0.2 --window-size 10000 --step-size 10000 --pool-size 100
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/export/pwc2igv.pl --input Tig_Fst_means4 --output Tig_Fstwindow_pop_means.igv
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl --input all_perl_PE_2.sync_bigmem --output all_fisher_results.fet --suppress-noninformative --window-size 10000 --step-size 10000 --min-count 2 --min-coverage 5 --max-coverage 200 --min-covered-fraction 0.2
+
+#ran this on the command line to install twotailed perl Module before running Fisher-test.pl: perl -MCPAN -e 'install Text::NSP::Measures::2D::Fisher2::twotailed', see also LSU HPC for details: http://www.hpc.lsu.edu/docs/faq/installation-details.php
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input all_perl_oyster.sync --output all_oyster.fet --min-count 6 --min-coverage 10 --max-coverage 200 --suppress-noninformative
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input all_perl_oyster.sync --output all_oyster.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input AR2-SE_perl_oyster.sync --output AR2-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input AR3-SE_perl_oyster.sync --output AR3-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input AR4-SE_perl_oyster.sync --output AR4-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input AR5-SE_perl_oyster.sync --output AR5-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input SL1-SE_perl_oyster.sync --output SL1-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input SL2-SE_perl_oyster.sync --output SL2-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input SL3-SE_perl_oyster.sync --output SL3-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input VB2-SE_perl_oyster.sync --output VB2-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input VB3-SE_perl_oyster.sync --output VB3-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input VB3_R2-SE_perl_oyster.sync --output VB3_R2-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input SLNS3-SE_perl_oyster.sync --output SLNS3-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+
+
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input VB2-SE_perl_oyster.sync --output VB2-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+#perl /work/jgrif61/Tigs/popoolation2_1201/fisher-test.pl  --input VB3-SE_perl_oyster.sync --output VB3-SE.fet --min-count 6 --min-coverage 20 --max-coverage 200 --suppress-noninformative
+
+#below is calculating exact allele freq differences
+cd /work/jgrif61/Oysters/seq_files
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input AR2-SE_perl_oyster.sync --output-prefix AR2-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input AR3-SE_perl_oyster.sync --output-prefix AR3-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input AR4-SE_perl_oyster.sync --output-prefix AR4-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input AR5-SE_perl_oyster.sync --output-prefix AR5-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input VB2-SE_perl_oyster.sync --output-prefix VB2-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input VB3-SE_perl_oyster.sync --output-prefix VB3-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input VB3_R2-SE_perl_oyster.sync --output-prefix VB3_R2-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input SL1-SE_perl_oyster.sync --output-prefix SL1-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input SL2-SE_perl_oyster.sync --output-prefix SL2-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input SL3-SE_perl_oyster.sync --output-prefix SL3-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input SLNS3-SE_perl_oyster.sync --output-prefix SLNS3-SE_exact --min-count 6 --min-coverage 20 --max-coverage 200
+
+
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff_JGedit.pl --input AR2-SE_perl_oyster.sync --output-prefix AR2-SE_exact_noabs --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff_JGedits2.pl --input AR2-SE_perl_oyster.sync --output-prefix AR2-SE_exact_noabs2 --min-count 6 --min-coverage 20 --max-coverage 200
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff_JGedits2.pl --input AR2-ES_perl_oyster.sync.save.1 --output-prefix AR2-ES_exact_noabs2 --min-count 6 --min-coverage 20 --max-coverage 200
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/snp-frequency-diff.pl --input all_perl_oyster2.sync --output-prefix all_pop_exact_cov20_200_new --min-count 6 --min-coverage 20 --max-coverage 200
+
+
+#all data
+#perl /work/jgrif61/Tigs/popoolation2_1201/cmh-test.pl --input all_perl_oyster.sync --output oyster_SE_cov10-500_mincount6.cmh --min-count 6 --min-coverage 10 --max-coverage 500 --population 7-6,10-9,12-11,15-14,20-19,23-21,28-27,32-31,35-33,40-39
+
+#AR population
+#perl /work/jgrif61/Tigs/popoolation2_1201/cmh-test.pl --input all_perl_oyster.sync --output AR_SE_cov10-500_mincount2.cmh --min-count 2 --min-coverage 10 --max-coverage 500 --population 7-6,10-9,12-11,15-14
+
+#"SL-VB" pop Round 2
+#perl /work/jgrif61/Tigs/popoolation2_1201/cmh-test.pl --input all_perl_oyster.sync --output SL-VB_R2_SE_cov10-500_mincount2.cmh --min-count 2 --min-coverage 10 --max-coverage 500 --population 23-21,28-27,32-31,35-33,40-39
+
+
+date
+exit

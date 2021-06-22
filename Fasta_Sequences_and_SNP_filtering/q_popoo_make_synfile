@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#PBS -q workq
+#PBS -A hpc_kelly_21_1
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=72:00:00
+#PBS -o /work/jgrif61/Oysters/output_files
+#PBS -j oe
+#PBS -M jgrif61@lsu.edu
+#PBS -N make_syncfiles_oysters
+
+date
+
+cd /work/jgrif61/Oysters/seq_files
+
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input all_oyster_out2.mpileup --output all_perl_oyster2.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input AR2-SE.mpileup --output AR2-SE_perl_oyster.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input AR3-SE.mpileup --output AR3-SE_perl_oyster.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input AR4-SE.mpileup --output AR4-SE_perl_oyster.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input AR5-SE.mpileup --output AR5-SE_perl_oyster.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input VB2-SE.mpileup --output VB2-SE_perl_oyster.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input VB3-SE.mpileup --output VB3-SE_perl_oyster.sync
+
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input VB3_R2-SE.mpileup --output VB3_R2-SE_perl_oyster.sync
+perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input SL1-SE.mpileup --output SL1-SE_perl_oyster.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input SL2-SE.mpileup --output SL2-SE_perl_oyster.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input SL3-SE.mpileup --output SL3-SE_perl_oyster.sync
+#perl /work/jgrif61/Tigs/popoolation2_1201/mpileup2sync.pl --fastq-type sanger --min-qual 20 --input SLNS3-SE.mpileup --output SLNS3-SE_perl_oyster.sync
+
+date
+exit

@@ -1,0 +1,59 @@
+#!/bin/bash
+
+#PBS -q checkpt
+#PBS -A hpc_kelly_21_1
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=72:00:00
+#PBS -o /work/jgrif61/Oysters/output_files
+#PBS -j oe
+#PBS -M jgrif61@lsu.edu
+#PBS -N mpileup_oysters-all
+
+cd /work/jgrif61/Oysters/seq_files
+
+#use first one here
+#samtools mpileup -f Oyster-input-seq.fas AR10_out.sorted AR13_out.sorted AR15_out.sorted AR1_out.sorted AR29_out.sorted AR2-E_out.sorted AR2-S_out.sorted AR35_out.sorted AR3-E_out.sorted AR3-S_out.sorted AR4-E_out.sorted AR4-S_out.sorted AR55_out.sorted AR5-E_out.sorted AR5-S_out.sorted AR9_out.sorted VB12_out.sorted VB14_out.sorted VB2-E_out.sorted VB2-S_out.sorted VB3-E_out.sorted VB3_out.sorted VB3-S_out.sorted VB69_out.sorted > all_oyster_out.mpileup
+
+#without SL4S and fam
+#samtools mpileup -f Oyster-input-seq.fas AR10_out.sorted AR13_out.sorted AR15_out.sorted AR1_out.sorted AR29_out.sorted AR2-E_out.sorted AR2-S_out.sorted AR35_out.sorted AR3-E_out.sorted AR3-S_out.sorted AR4-E_out.sorted AR4-S_out.sorted AR55_out.sorted AR5-E_out.sorted AR5-S_out.sorted AR9_out.sorted VB12_out.sorted VB14_out.sorted VB2-E_out.sorted VB2-S_out.sorted VB3-E_out.sorted VB3_out.sorted VB3-S_out.sorted VB69_out.sorted SL17_out.sorted SL18_out.sorted SL1E_out.sorted SL1S_out.sorted SL28_out.sorted SL29_out.sorted SL2E_out.sorted SL2S_out.sorted SL3E_out.sorted SL3_out.sorted SL3S_out.sorted SL4_out.sorted SLNS3E_out.sorted VB2_R2_out.sorted VB3E_R2_out.sorted VB3S_R2_out.sorted VB8_R2_out.sorted > all_oyster_out2.mpileup
+
+
+#samtools mpileup -f Oyster-input-seq.fas AR2-E_out.sorted AR2-S_out.sorted > AR2-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas AR3-E_out.sorted AR3-S_out.sorted > AR3-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas AR4-E_out.sorted AR4-S_out.sorted > AR4-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas AR5-E_out.sorted AR5-S_out.sorted > AR5-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas VB2-E_out.sorted VB2-S_out.sorted > VB2-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas VB3-E_out.sorted VB3-S_out.sorted > VB3-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas VB3E_R2_out.sorted VB3S_R2_out.sorted > VB3_R2-SE.mpileup
+samtools mpileup -f Oyster-input-seq.fas SL1E_out.sorted SL1S_out.sorted > SL1-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas SL2E_out.sorted SL2S_out.sorted > SL2-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas SL3E_out.sorted SL3S_out.sorted > SL3-SE.mpileup
+#samtools mpileup -f Oyster-input-seq.fas SLNS3E_out.sorted SL3S_out.sorted > SLNS3-SE.mpileup
+
+
+#awk '$4 > 0' all_out_PE_2.mpileup_tutorial > all_nomissdata_PE_2.mpileup_tutorial
+#awk 'NF == 36' all_nomissdata_PE_2.mpileup_tutorial > all_nomissdata2_PE_2.mpileup_tutorial  #changed from 39 to 36 because 1U not included
+
+#use second one here
+#awk '$4 > 0' 1-5_out.mpileup > 1-5_nomissdata.mpileup
+#awk 'NF == 39' all_out_PE.mpileup > all_out_PE2.mpileup
+
+#awk '$4 > 5' all_nomissdata2.mpileup > FILE1.mpileup
+#awk '$7 > 5' FILE1.mpileup > FILE2.mpileup
+#awk '$10 > 5' FILE2.mpileup > FILE3.mpileup
+#awk '$13 > 5' FILE3.mpileup > FILE4.mpileup
+#awk '$16 > 5' FILE4.mpileup > FILE5.mpileup
+
+#awk 'length($5) == length($6)' FILE5.mpileup > FILE6.mpileup
+#awk 'length($8) == length($9)' FILE6.mpileup > FILE7.mpileup
+#awk 'length($11) == length($12)' FILE7.mpileup > FILE8.mpileup
+#awk 'length($14) == length($15)' FILE8.mpileup > FILE9.mpileup
+#awk 'length($17) == length($18)' FILE9.mpileup > FILE10.mpileup
+
+
+#grep -v "<JJJJJJ7JJ999999999999999989999999999998" all_nomissdata2.mpileup > all_nomissdata3.mpileup
+#grep -v ">>A>IJJJA;44JAFJ;H;4F4JAJJ;FJ;;;;7FAJ;;;;;;;;;" all_nomissdata3.mpileup > all_nomissdata4.mpileup
+#grep -v "B/00///////////.///////////" all_nomissdata4.mpileup > all_nomissdata5.mpileup
+
+date
+exit

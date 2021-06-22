@@ -1,0 +1,107 @@
+#!/bin/bash
+
+#PBS -q checkpt
+#PBS -A hpc_kelly_21_1
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=24:00:00
+#PBS -o /work/jgrif61/Oysters/output_files
+#PBS -j oe
+#PBS -M jgrif61@lsu.edu
+#PBS -N bowtie_sort7
+
+cd /work/jgrif61/Oysters
+
+#bowtie2-build Oyster-input-seq.fas oyster_bait_ref_index
+
+cd /work/jgrif61/Oysters/raw_reads
+#bowtie2 -x oyster_bait_ref_index -U AR10_S13_L003_R1_001_trimmed.fq.gz -S AR10_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR13_S29_L003_R1_001_trimmed.fq.gz -S AR13_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR15_S7_L003_R1_001_trimmed.fq.gz -S AR15_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR1_S23_L003_R1_001_trimmed.fq.gz -S AR1_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR29_S19_L003_R1_001_trimmed.fq.gz -S AR29_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR2-E_S17_L003_R1_001_trimmed.fq.gz -S AR2-E_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR2-S_S28_L003_R1_001_trimmed.fq.gz -S AR2-S_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR35_S24_L003_R1_001_trimmed.fq.gz -S AR35_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR3-E_S25_L003_R1_001_trimmed.fq.gz -S AR3-E_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR3-S_S22_L003_R1_001_trimmed.fq.gz -S AR3-S_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR4-E_S27_L003_R1_001_trimmed.fq.gz -S AR4-E_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR4-S_S9_L003_R1_001_trimmed.fq.gz -S AR4-S_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR55_S8_L003_R1_001_trimmed.fq.gz -S AR55_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR5-E_S14_L003_R1_001_trimmed.fq.gz -S AR5-E_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR5-S_S26_L003_R1_001_trimmed.fq.gz -S AR5-S_out.sam
+#bowtie2 -x oyster_bait_ref_index -U AR9_S10_L003_R1_001_trimmed.fq.gz -S AR9_out.sam
+#bowtie2 -x oyster_bait_ref_index -U VB12_S21_L003_R1_001_trimmed.fq.gz -S VB12_out.sam
+#bowtie2 -x oyster_bait_ref_index -U VB14_S18_L003_R1_001_trimmed.fq.gz -S VB14_out.sam
+#bowtie2 -x oyster_bait_ref_index -U VB2-E_S15_L003_R1_001_trimmed.fq.gz -S VB2-E_out.sam
+#bowtie2 -x oyster_bait_ref_index -U VB2-S_S20_L003_R1_001_trimmed.fq.gz -S VB2-S_out.sam
+#bowtie2 -x oyster_bait_ref_index -U VB3-E_S12_L003_R1_001_trimmed.fq.gz -S VB3-E_out.sam
+#bowtie2 -x oyster_bait_ref_index -U VB3_S16_L003_R1_001_trimmed.fq.gz -S VB3_out.sam
+#bowtie2 -x oyster_bait_ref_index -U VB3-S_S30_L003_R1_001_trimmed.fq.gz -S VB3-S_out.sam
+#bowtie2 -x oyster_bait_ref_index -U VB69_S11_L003_R1_001_trimmed.fq.gz -S VB69_out.sam
+
+cd /work/jgrif61/Oysters/raw_reads_r2
+#bowtie2 -x oyster_bait_ref_index -1 SL17_USPD16103237-D701-AK1682_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL17_USPD16103237-D701-AK1682_H3FLNBBXX_L7_2_val_2.fq.gz -S SL17_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL18_USPD16103237-D701-AK1780_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL18_USPD16103237-D701-AK1780_H3FLNBBXX_L7_2_val_2.fq.gz -S SL18_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL1E_USPD16103237-D702-AK1681_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL1E_USPD16103237-D702-AK1681_H3FLNBBXX_L7_2_val_2.fq.gz -S SL1E_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL1S_USPD16103237-D702-AK1680_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL1S_USPD16103237-D702-AK1680_H3FLNBBXX_L7_2_val_2.fq.gz -S SL1S_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL28_USPD16103237-D701-AK1543_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL28_USPD16103237-D701-AK1543_H3FLNBBXX_L7_2_val_2.fq.gz -S SL28_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL29_USPD16103237-D701-AK1544_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL29_USPD16103237-D701-AK1544_H3FLNBBXX_L7_2_val_2.fq.gz -S SL29_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL2E_USPD16103237-D702-AK1780_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL2E_USPD16103237-D702-AK1780_H3FLNBBXX_L7_2_val_2.fq.gz -S SL2E_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL2S_USPD16103237-D702-AK1682_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL2S_USPD16103237-D702-AK1682_H3FLNBBXX_L7_2_val_2.fq.gz -S SL2S_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL3E_USPD16103237-D702-AK1544_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL3E_USPD16103237-D702-AK1544_H3FLNBBXX_L7_2_val_2.fq.gz -S SL3E_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL3S_USPD16103237-D702-AK1543_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL3S_USPD16103237-D702-AK1543_H3FLNBBXX_L7_2_val_2.fq.gz -S SL3S_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL3_USPD16103237-D701-AK1680_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL3_USPD16103237-D701-AK1680_H3FLNBBXX_L7_2_val_2.fq.gz -S SL3_out.sam
+#bowtie2 -x oyster_bait_ref_index -1 SL4_USPD16103237-D701-AK1681_H3FLNBBXX_L7_1_val_1.fq.gz -2 SL4_USPD16103237-D701-AK1681_H3FLNBBXX_L7_2_val_2.fq.gz -S SL4_out.sam
+bowtie2 -x oyster_bait_ref_index -1 SLNS3E_USPD16103237-D702-AK1545_H3FLNBBXX_L7_1_val_1.fq.gz -2 SLNS3E_USPD16103237-D702-AK1545_H3FLNBBXX_L7_2_val_2.fq.gz -S SLNS3E_out.sam
+bowtie2 -x oyster_bait_ref_index -1 VB2_USPD16103237-DY0088-AK1780_H3FLNBBXX_L7_1_val_1.fq.gz -2 VB2_USPD16103237-DY0088-AK1780_H3FLNBBXX_L7_2_val_2.fq.gz -S VB2_R2_out.sam
+bowtie2 -x oyster_bait_ref_index -1 VB3E_USPD16103237-DY0088-AK1544_H3FLNBBXX_L7_1_val_1.fq.gz -2 VB3E_USPD16103237-DY0088-AK1544_H3FLNBBXX_L7_2_val_2.fq.gz -S VB3E_R2_out.sam
+bowtie2 -x oyster_bait_ref_index -1 VB3S_USPD16103237-DY0088-AK1543_H3FLNBBXX_L7_1_val_1.fq.gz -2  VB3S_USPD16103237-DY0088-AK1543_H3FLNBBXX_L7_2_val_2.fq.gz -S VB3S_R2_out.sam
+bowtie2 -x oyster_bait_ref_index -1 VB8_USPD16103237-DY0088-AK1682_H3FLNBBXX_L7_1_val_1.fq.gz -2  VB8_USPD16103237-DY0088-AK1682_H3FLNBBXX_L7_2_val_2.fq.gz -S VB8_R2_out.sam
+
+cd /work/jgrif61/Oysters/raw_reads
+#samtools view -bS AR10_out.sam | samtools sort -o AR10_out.sorted
+#samtools view -bS AR13_out.sam | samtools sort -o AR13_out.sorted
+#samtools view -bS AR15_out.sam | samtools sort -o AR15_out.sorted
+#samtools view -bS AR1_out.sam | samtools sort -o AR1_out.sorted
+#samtools view -bS AR29_out.sam | samtools sort -o AR29_out.sorted
+#samtools view -bS AR2-E_out.sam | samtools sort -o AR2-E_out.sorted
+#samtools view -bS AR2-S_out.sam | samtools sort -o AR2-S_out.sorted
+#samtools view -bS AR35_out.sam | samtools sort -o AR35_out.sorted
+#samtools view -bS AR3-E_out.sam | samtools sort -o AR3-E_out.sorted
+#samtools view -bS AR3-S_out.sam | samtools sort -o AR3-S_out.sorted
+#samtools view -bS AR4-E_out.sam | samtools sort -o AR4-E_out.sorted
+#samtools view -bS AR4-S_out.sam | samtools sort -o AR4-S_out.sorted
+#samtools view -bS AR55_out.sam | samtools sort -o AR55_out.sorted
+#samtools view -bS AR5-E_out.sam | samtools sort -o AR5-E_out.sorted
+#samtools view -bS AR5-S_out.sam | samtools sort -o AR5-S_out.sorted
+#samtools view -bS AR9_out.sam | samtools sort -o AR9_out.sorted
+#samtools view -bS VB12_out.sam | samtools sort -o VB12_out.sorted
+#samtools view -bS VB14_out.sam | samtools sort -o VB14_out.sorted
+#samtools view -bS VB2-E_out.sam | samtools sort -o VB2-E_out.sorted
+#samtools view -bS VB2-S_out.sam | samtools sort -o VB2-S_out.sorted
+#samtools view -bS VB3-E_out.sam | samtools sort -o VB3-E_out.sorted
+#samtools view -bS VB3_out.sam | samtools sort -o VB3_out.sorted
+#samtools view -bS VB3-S_out.sam | samtools sort -o VB3-S_out.sorted
+#samtools view -bS VB69_out.sam | samtools sort -o VB69_out.sorted
+
+cd /work/jgrif61/Oysters/raw_reads_r2
+#samtools view -bS SL17_out.sam | samtools sort -o SL17_out.sorted
+#samtools view -bS SL18_out.sam | samtools sort -o SL18_out.sorted
+#samtools view -bS SL1E_out.sam | samtools sort -o SL1E_out.sorted
+#samtools view -bS SL1S_out.sam | samtools sort -o SL1S_out.sorted
+#samtools view -bS SL28_out.sam | samtools sort -o SL28_out.sorted
+#samtools view -bS SL29_out.sam | samtools sort -o SL29_out.sorted
+#samtools view -bS SL2E_out.sam | samtools sort -o Sl2E_out.sorted
+#samtools view -bS SL2S_out.sam | samtools sort -o SL2S_out.sorted
+#samtools view -bS SL3_out.sam | samtools sort -o SL3_out.sorted
+#samtools view -bS SL4_out.sam | samtools sort -o SL4_out.sorted
+#samtools view -bS SL3E_out.sam | samtools sort -o SL3E_out.sorted
+#samtools view -bS SL3S_out.sam | samtools sort -o SL3S_out.sorted
+#samtools view -bS SLNS3E_out.sam | samtools sort -o SLNS3E_out.sorted
+#samtools view -bS VB2_R2_out.sam | samtools sort -o VB2_R2_out.sorted
+#samtools view -bS VB8_R2_out.sam | samtools sort -o VB8_R2_out.sorted
+samtools view -bS VB3E_R2_out.sam | samtools sort -o VB3E_R2_out.sorted
+samtools view -bS VB3S_R2_out.sam | samtools sort -o VB3S_R2_out.sorted
+
+date
+exit
