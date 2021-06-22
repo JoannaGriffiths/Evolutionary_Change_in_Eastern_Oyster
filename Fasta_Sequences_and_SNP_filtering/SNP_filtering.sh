@@ -50,3 +50,31 @@ cut -c-45 AR2-SE_sig.fet > AR2-SE_sig_edit.fet #final formatting
 cut -c47- AR2-SE_sig.fet > AR2-SE_sig_edit2.fet
 paste -d '\t' AR2-SE_sig_edit AR2-SE_sig_edit2 > AR2-SE_sig_edit3
 
+
+#following works on command line, have not tested over qsub
+sed 's/-/\t/g' AR2-SE_sig_edit3.fet > AR2-SE_sig_edit4.fet
+sed 's/-/\t/g' AR3-SE_sig_edit3.fet > AR3-SE_sig_edit4.fet
+sed 's/-/\t/g' AR4-SE_sig_edit3.fet > AR4-SE_sig_edit4.fet
+sed 's/-/\t/g' AR5-SE_sig_edit3.fet > AR5-SE_sig_edit4.fet
+sed 's/-/\t/g' SL1-SE_sig_edit3.fet > SL1-SE_sig_edit4.fet
+sed 's/-/\t/g' SL2-SE_sig_edit3.fet > SL2-SE_sig_edit4.fet
+sed 's/-/\t/g' SL3-SE_sig_edit3.fet > SL3-SE_sig_edit4.fet
+sed 's/-/\t/g' SLNS3-SE_sig_edit3.fet > SLNS3-SE_sig_edit4.fet
+sed 's/-/\t/g' VB2-SE_sig_edit3.fet > VB2-SE_sig_edit4.fet
+sed 's/-/\t/g' VB3-SE_sig_edit3.fet > VB3-SE_sig_edit4.fet
+sed 's/-/\t/g' VB3_R2-SE_sig_edit3.fet > VB3_R2-SE_sig_edit4.fet
+
+sed 's/'1:2='//g' VB3_R2-SE_sig_edit4.fet > VB3_R2-SE_sig_edit5.fet
+sed 's/'1:2='//g' VB3-SE_sig_edit4.fet > VB3-SE_sig_edit5.fet
+sed 's/'1:2='//g' VB2-SE_sig_edit4.fet > VB2-SE_sig_edit5.fet
+sed 's/'1:2='//g' SL1-SE_sig_edit4.fet > SL1-SE_sig_edit5.fet
+sed 's/'1:2='//g' SL2-SE_sig_edit4.fet > SL2-SE_sig_edit5.fet
+sed 's/'1:2='//g' SL3-SE_sig_edit4.fet > SL3-SE_sig_edit5.fet
+sed 's/'1:2='//g' SLNS3-SE_sig_edit4.fet > SLNS3-SE_sig_edit5.fet
+sed 's/'1:2='//g' AR2-SE_sig_edit4.fet > AR2-SE_sig_edit5.fet
+sed 's/'1:2='//g' AR3-SE_sig_edit4.fet > AR3-SE_sig_edit5.fet
+sed 's/'1:2='//g' AR4-SE_sig_edit4.fet > AR4-SE_sig_edit5.fet
+sed 's/'1:2='//g' AR5-SE_sig_edit4.fet > AR5-SE_sig_edit5.fet
+
+date
+exit
