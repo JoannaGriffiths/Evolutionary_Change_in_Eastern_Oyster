@@ -15,9 +15,9 @@
 
 *Script*: Manhattan_plot.R 
 
-*Input files*: *CROSS*-newpvalue_Manhattan (e.g. LA1-newpvalue_Manhattan)
+*Input files*: *CROSS*-SE_sig_edit5.fet (e.g. AR2-SE_sig_edit5.fet), cvirginica_exome_genome.txt
 
-*Description*: Script contains code for plotting Manhattan plots for crosses that had genes under selection and crosses that did not.
+*Description*: After filtering output from Fisher's exact test (see SNP_filtering.sh script), this code will apply FDR correction on pvalues. It will then filter for significant genes where there are at least three significant SNPs per gene. Finally, data formatting is performed for plotting Manhattan plots for crosses that had genes under selection and crosses that did not. The file "cvirginica_exome_genome.txt" contains general genome/chromosome size info for the Manhattan plot.
 
 
 
@@ -26,7 +26,31 @@
 
 *Script*: Annotation.R
 
-*Input files*: 
+*Input files*: *CROSS*-SE_sig_edit5.fet (e.g. AR2-SE_sig_edit5.fet), Supplemental_TableS1
 
-*Description*: Script contains code for determining if genes under seleciton were enriched in a particular functional or source category. It also determines whether SNPs were more likely to be upstream of the gene than within the gene body.
+*Description*: Script contains code for determining if genes under seleciton for each cross were enriched in a particular functional or source category (information contained in the file "Supplemental_TableS1".
+
+
+
+
+## SNP_position_Analysis
+
+*Script*: SNP_position_enrichment_analysis.R
+
+*Input files*: Annotated Probe Report for *CROSS*_start.txt (e.g. Annotated Probe Report for AR2_start.txt), Annotated Probe Report for *CROSS*_sig_SNPs.txt (e.g. Annotated Probe Report for AR2_sig_SNPs.txt), Supplemental_TableS1
+
+*Description*: Script contains code for determining if genes under selection for each cross were more likely to be found upstream, downstream, or within the gene body. Input files contain SNP positions before selection (start files) and after selection for significant SNPs (sig files).
+
+
+
+
+## Fasta_Sequences_and_SNP_filtering
+
+*Script*: q_trimgalore1_SE, q_bowtie_oysterbait, q_mpileup, q_popoo_make_synfile, q_stat_tests, SNP_filtering.sh
+
+*Input files*: Raw reads found on NCBI (accession no.: PRJNA699020), Supplemental_TableS1, Oyster-input-seq.fas
+
+*Description*: Folder contains scripts for trimming raw sequences (q_trimgalore1_SE), aligning to Oyster-input-seq.fas, formatting files into mpileup format and syncfiles, andd finally running popoolation2 analyses, such as Fisher's exact test and the exact allele frequency estimates (q_stat_tests). SNP_filtering.sh contains code for filtering SNPs from Fisher's exact test using starting frequency and increases in frequency post-selection.
+
+
 
