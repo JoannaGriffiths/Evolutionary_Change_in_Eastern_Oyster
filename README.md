@@ -23,9 +23,9 @@ TX 4 | AR5
 
 *Script*: q_trimgalore1_SE, q_bowtie_oysterbait, q_mpileup, q_popoo_make_synfile, q_stat_tests, SNP_filtering.sh
 
-*Input files*: Raw reads found on NCBI (accession no.: PRJNA699020), Supplemental_TableS1, Oyster-input-seq.fas
+*Input files*: Raw reads found on NCBI (accession no.: PRJNA699020), *CROSS*-SE_exact_rc (e.g. AR20SE_exact_rc), *CROSS*-SE.fet (e.g. AR2-SE.fet), Supplemental_TableS1, Oyster-input-seq.fas
 
-*Description*: Folder contains scripts for trimming raw sequences (q_trimgalore1_SE), aligning to Oyster-input-seq.fas, formatting files into mpileup format and syncfiles, andd finally running popoolation2 analyses, such as Fisher's exact test and the exact allele frequency estimates (q_stat_tests). SNP_filtering.sh contains code for filtering SNPs from Fisher's exact test using starting frequency and increases in frequency post-selection.
+*Description*: Folder contains scripts for trimming raw sequences (q_trimgalore1_SE), aligning to Oyster-input-seq.fas, formatting files into mpileup format and syncfiles, andd finally running popoolation2 analyses (q_stat_tests), such as Fisher's exact test (example output file: *CROSS*-SE.fet) and the exact allele frequency estimates (example output file AR20SE_exact_rc). SNP_filtering.sh contains code for filtering SNPs from Fisher's exact test using starting frequency and increases in frequency post-selection.
 
 
 
