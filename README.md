@@ -1,28 +1,19 @@
 # Scripts and data from Griffiths, J.S. et al. (in review) Evolutionary change in the Eastern oyster, *Crassostrea virginica*, following low salinity exposure.
 
 
+Crosses were re-named for publication. The following table contains the cross name used in the manuscript and its associated naming scheme for sequencing and coding.
 Cross | Coding_Name
 --- | --- 
 LA 1 | VB2 
---- | --- 
 LA 2 | VB3
---- | --- 
 LA 3 | VB3_R2
---- | --- 
-LA 4 | SL1
---- | --- 
-LA 5 | SL2
---- | --- 
-LA 6 | SL3
---- | --- 
+LA 4 | SL1 
+LA 5 | SL2 
+LA 6 | SL3 
 LA 6 NS | SLNS3
---- | --- 
 TX 1 | AR2
---- | --- 
-TX 2 | AR3
---- | --- 
-TX 3 | AR4
---- | --- 
+TX 2 | AR3 
+TX 3 | AR4 
 TX 4 | AR5
 
 
