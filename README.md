@@ -1,5 +1,24 @@
 # Scripts and data from Griffiths, J.S. et al. (in review) Evolutionary change in the Eastern oyster, *Crassostrea virginica*, following low salinity exposure.
 
+
+Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+
+
+
+
+## Fasta_Sequences_and_SNP_filtering
+
+*Script*: q_trimgalore1_SE, q_bowtie_oysterbait, q_mpileup, q_popoo_make_synfile, q_stat_tests, SNP_filtering.sh
+
+*Input files*: Raw reads found on NCBI (accession no.: PRJNA699020), Supplemental_TableS1, Oyster-input-seq.fas
+
+*Description*: Folder contains scripts for trimming raw sequences (q_trimgalore1_SE), aligning to Oyster-input-seq.fas, formatting files into mpileup format and syncfiles, andd finally running popoolation2 analyses, such as Fisher's exact test and the exact allele frequency estimates (q_stat_tests). SNP_filtering.sh contains code for filtering SNPs from Fisher's exact test using starting frequency and increases in frequency post-selection.
+
+
+
+
 ## PCoA Analysis
 
 *Script*: PCoA_oysters.R
@@ -40,17 +59,3 @@
 *Input files*: Annotated Probe Report for *CROSS*_start.txt (e.g. Annotated Probe Report for AR2_start.txt), Annotated Probe Report for *CROSS*_sig_SNPs.txt (e.g. Annotated Probe Report for AR2_sig_SNPs.txt), Supplemental_TableS1
 
 *Description*: Script contains code for determining if genes under selection for each cross were more likely to be found upstream, downstream, or within the gene body. Input files contain SNP positions before selection (start files) and after selection for significant SNPs (sig files).
-
-
-
-
-## Fasta_Sequences_and_SNP_filtering
-
-*Script*: q_trimgalore1_SE, q_bowtie_oysterbait, q_mpileup, q_popoo_make_synfile, q_stat_tests, SNP_filtering.sh
-
-*Input files*: Raw reads found on NCBI (accession no.: PRJNA699020), Supplemental_TableS1, Oyster-input-seq.fas
-
-*Description*: Folder contains scripts for trimming raw sequences (q_trimgalore1_SE), aligning to Oyster-input-seq.fas, formatting files into mpileup format and syncfiles, andd finally running popoolation2 analyses, such as Fisher's exact test and the exact allele frequency estimates (q_stat_tests). SNP_filtering.sh contains code for filtering SNPs from Fisher's exact test using starting frequency and increases in frequency post-selection.
-
-
-
