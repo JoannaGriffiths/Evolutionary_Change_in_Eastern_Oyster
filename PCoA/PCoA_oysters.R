@@ -141,8 +141,8 @@ G1
 
 #determing if distances are correlated with treatment factors
 distances <- read.delim("PCoA_larval_distances.txt", header=TRUE)
-t.test(distances$Distance~distances$Sig) #not sig, whether the cross had significant genes under selection
-t.test(distances$Distance~distances$Pop) #not sig
-model1 = lm(Distance ~ Salinity, data = distances) #salinity exposure (ie 3, 4, or 7 psu)
-summary(aov(model1)) #not significant
+distances$Sig <- as.numeric(distances$Sig)
+summary(aov(lm(Distance ~ Sig, data = distances))) #not sig
+summary(aov(lm(Distance ~ Pop, data = distances))) #not sig
+summary(aov(lm(Distance ~ Salinity, data = distances))) #not significant
 
