@@ -1,153 +1,153 @@
-Gene;Chromosome;Start_position;End_position;Source;Function;grouping
-22430393;35784;6221600;6231601;high gene expression and blast to Meng;cysteine sulfinic acid decarboxylase-like;FAA metabolism
-22430406;35784;56923836;56933837;high Fst;G-protein coupled receptor 157-like, transcript variant X3;immune system
-22430468;35784;25158680;25168681;Random;Sodium & CL glycine transporter;ion/water balance
-22430824;35785;42584114;42594115;high Fst and gene expression;E3 ubiquitin-protein ligase TRIM33-like;ubiquitin
-22430888;35785;14129802;14139803;She 2018;Heat shock 70 kDa protein 12A;chemical defense
-22431296;35785;8384398;8394399;She 2018;Baculoviral IAP repeat-containing protein 3;immune system
-22431333;35780;2834337;2844338;high Fst and gene expression;protein FAM124A-like;uncharacterized
-22431880;35785;17653961;17663962;Random;proteasomal ATPase;proteolysis
-22431904;35785;21044564;21054565;Random;cation transporter;ion/water balance
-22431981;35785;3206384;3216385;high gene expression;proline -rich transmembrane protein;ion/water balance
-22432300;35785;15028989;15038990;She 2018;Solute carrier family 22 member 13;ion/water balance
-22433588;35785;29278817;29288818;Random;serine/theronine kinase;FAA metabolism
-22434054;35785;34376044;34386045;high gene expression;laccase-like;ROS-related
-22434109;35785;34365229;34375230;high gene expression;laccase-like;ROS-related
-22434541;35785;43680163;43690164;high gene expression;putative cytochrome P450;chemical defense
-22434694;35785;23852095;23862096;Random;ubiquitin ligase;ubiquitin
-22434894;35785;33563405;33573406;She and Meng;Aquaporin-2 ;ion/water balance
-22434918;35785;32694243;32704244;She 2018;Heat shock 70 kDa protein 12A;chemical defense
-22434940;35785;3379820;3389821;high gene expression;putative cytochrome P450;chemical defense
-22435092;35786;15603975;15613976;She 2018;Glutathione peroxidase;ROS-related
-22436272;35786;2664454;2674455;Random;leucine rich repeat containing G-protein coupled receptor;immune system
-22436490;35786;39012421;39022422;Random;basic phospholipase A2 3-like%2C transcript variant X2;fatty acid hydrolysis
-22436553;35786;39691593;39701594;Random;phospholipase D1-like%2C transcript variant X6;fatty acid hydrolysis
-22436563;35786;46228131;46238132;Random;phospholipase D1-like%2C transcript variant X6;fatty acid hydrolysis
-22436694;35786;31749933;31759934;She 2018;Stress-induced protein 1 ;chemical defense
-22436805;35786;50605423;50615424;high gene expression;elongation-factor 2-like;EF
-22436855;35786;8844291;8854292;Random;ubiquinene biosynthesis;ubiquitin
-22437155;35780;30875591;30885592;She and Meng;Aquaporin-2 ;ion/water balance
-22438566;35780;31451787;31461788;She 2018;Complement C1q-like protein 4;immune system
-22439003;35786;37047098;37057099;Random;glycine N-acyltransferase-like%2C transcript variant X3;aa protein
-22439132;35786;24933377;24943378;Random;allene oxide synthase-lipoxygenase protein-like;uncharacterized
-22439749;35786;29139118;29149119;She 2018;Stress-induced protein 1 ;chemical defense
-22440183;35787;69710395;69720396;blast to Meng;Voltage-gated potassium channel subunit beta-2;ion/water balance
-22440622;35780;17774204;17784205;She and Meng;Ornithine aminotransferase, mitochondrial;FAA metabolism
-22441293;35787;34869703;34879704;Random;aminotransferase;FAA metabolism
-22441408;35787;7989833;7999834;Random;proline-rich protein 2-like;aa protein
-22442553;35787;63305749;63315750;Random;proline-rich protein 2-like;aa protein
-22442587;35787;43806628;43816629;Random;sodium-dependent transporter;ion/water balance
-22443236;35780;47923901;47933902;Random;phosphatidylinositol-gylcan phospholipase;fatty acid hydrolysis
-22443320;35787;21026380;21036381;blast to Meng;Alanine aminotransferase 2 ;FAA metabolism
-22443787;35787;671194;681195;Random;sodium-dependent transporter;ion/water balance
-22444711;35787;18156278;18166279;high Fst;phospholipase A2 inhibitor-like;fatty acid hydrolysis
-22445237;35787;50488369;50498370;She 2018;Apoptosis inhibitor IAP;immune system
-22445527;35787;17387790;17397791;She 2018;Complement C1q-like protein 3;immune system
-22446053;35787;57201142;57211143;high gene expression and She;Cytochrome P450 1A2;chemical defense
-22446194;35787;7281790;7291791;Random;G-protein coupled receptor 84-like;immune system
-22446304;35787;34878005;34888006;Random;G-protein coupled receptor 84-like;immune system
-22446487;35787;29542105;29552106;She 2018;Complement C1q tumor necrosis factor-related protein 3;immune system
-22447067;35787;52042449;52052450;She 2018;Cytochrome P450 3A9;chemical defense
-22448581;35788;52327885;52337886;Random;trans-L-3-hydroxyproline dehydratase-like;FAA metabolism
-22449029;35788;18525440;18535441;Random;glycine-rich cell wall structural protein 1.0-like;aa protein
-22449286;35780;3397988;3407989;Random;G-protein coupled receptor;immune system
-22449816;35788;14463404;14473405;high gene expression and Fst;uncharacterized LOC111112363;uncharacterized
-22450164;35788;8380057;8390058;Random;proline-rich protein 36-like;aa protein
-22450705;35788;95582491;95592492;She 2018;Scavenger receptor class F member 2 ;immune system
-22450779;35780;39895392;39905393;high gene expression;proteolysis;proteolysis
-22450804;35788;76639935;76649936;blast to Meng;Aquaporin ;ion/water balance
-22451203;35788;45459086;45469087;She and Meng;Ornithine aminotransferase, mitochondrial;FAA metabolism
-22451612;35788;24576683;24586684;She 2018;Scavenger receptor class F member 2 ;immune system
-22451937;35788;24598579;24608580;She 2018;Scavenger receptor class F member 2 ;immune system
-22452045;35788;33862774;33872775;She 2018;Scavenger receptor class F member 2 ;immune system
-22452319;35780;29419435;29429436;high Fst;mdm2-binding protein-like;immune system
-22452419;35788;73442410;73452411;high Fst;uncharacterized LOC111114130;uncharacterized
-22452520;35788;85998475;86008476;She 2018;Extracellular superoxide dismutase [Cu-Zn];ROS-related
-22452549;35780;8088369;8098370;blast to Meng;Serine hydroxymethyltransferase;FAA metabolism
-22454252;35788;14941063;14951064;high gene expression;laccase-like;ROS-related
-22454361;35788;12099418;12109419;Random;glycine-rich cell wall structural protein 1.8-like;aa protein
-22454425;35788;72577670;72587671;blast to Meng;Aldehyde dehydrogenase family 3 member B1 ;FAA metabolism
-22454561;35788;64949689;64959690;high gene expression;glycine tRNA-ligase like;uncharacterized
-22454898;35788;16682864;16692865;high gene expression;cytochrome P450;chemical defense
-22455052;35788;36948967;36958968;high gene expression;phosphoserine aminotransferase-like;FAA metabolism
-22455316;35789;13684351;13694352;Random;uncharacterized metal-dependent hydrolase YcfH-like;uncharacterized
-22455366;35789;16111570;16121571;She 2018;Apoptosis inhibitor IAP;immune system
-22455398;35789;18102920;18112921;Random;proline-%2C glutamic acid- and leucine-rich protein 1-like;aa protein
-22455638;35789;26386906;26396907;Random;cation ion channel;ion/water balance
-22455778;35789;11054652;11064653;Random;receptor-type tyrosine-protein phosphatase mu-like%2C transcript variant X2;FAA metabolism
-22455865;35780;37909595;37919596;high gene expression;sodium dependent proline transporter;ion/water balance
-22455926;35789;28645343;28655344;Random;cation channel;ion/water balance
-22456218;35789;697427;707428;She 2018;Apoptosis inhibitor IAP;immune system
-22456272;35789;3175740;3185741;Random;G-protein coupled receptor daf-37-like;immune system
-22456387;35789;23377468;23387469;high Fst and gene expression;uncharacterized LOC111117323, transcript variant X2;uncharacterized
-22456689;35789;8195106;8205107;Random;cytochrome P450 2C8-like%2C transcript variant X1;chemical defense
-22457334;35781;45783753;45793754;high Fst and gene expression;uncharacterized LOC111118044;uncharacterized
-22457562;35781;8426234;8436235;Random;gluthathione peroxidase;ROS-related
-22458334;35781;43575473;43585474;She 2018;Glutathione peroxidase;ROS-related
-22459209;NA;NA;NA;NA;NA;
-22460042;35781;4069876;4079877;high Fst and gene expression;protein FAM124A-like;uncharacterized
-22460202;35781;13485506;13495507;Random;glycine dehydrogenase;FAA metabolism
-22460685;35781;34647418;34657419;high gene expression;phospholipase B-like;fatty acid hydrolysis
-22460911;35781;22580073;22590074;Random;glutathione peroxidase-like;ROS-related
-22462887;35781;29855615;29865616;She 2018;Amino acid transporter;ion/water balance
-22463410;35781;48626839;48636840;high gene expression;hydroxymethyltransferase, cytosolic-like;ion/water balance
-22463458;35781;60555776;60565777;high gene expression; cytochrome P450;chemical defense
-22464577;35782;19531518;19541519;high Fst and gene expression;stimulated by retinoic acid gene 6 protein-like, transcript variant X1;uncharacterized
-22464888;35782;71307278;71317279;Meng;XM: sodium- and chloride-dependent glycine transporter;ion/water balance
-22464985;35782;72893109;72903110;She and Meng;XM: sodium-dependent proline transporter-like;ion/water balance
-22465298;35782;6255698;6265699;high Fst;putative RNA polymerase II subunit B1 CTD phosphatase RPAP2, transcript variant X2;RNA polymerase
-22466570;35782;49809887;49819888;She 2018;Apoptosis 1 inhibitor;immune system
-22467005;35782;25511603;25521604;high Fst;uncharacterized LOC111124140;uncharacterized
-22468365;35782;49474186;49484187;high gene expression;sodium and chloride dependent glycine transporter;ion/water balance
-22468800;35782;64364686;64374687;high Fst and gene expression;tetraspanin-9-like;ion/water balance
-22468985;35782;54821045;54831046;high Fst and gene expression;senecionine N-oxygenase-like, transcript variant X2;ROS-related
-22469890;35782;63587069;63597070;high Fst and gene expression;uncharacterized LOC111125771, transcript variant X4;uncharacterized
-22470031;35782;24961627;24971628;high gene expression and Meng;carnosine biosynthetic process;FAA metabolism
-22470155;35782;12730301;12740302;Random;laccase-like;ROS-related
-22470793;35782;54741285;54751286;She 2018;Heat shock 70 kDa protein 12A;chemical defense
-22471374;35782;32284161;32294162;high gene expression; leucine-rich repeat-containing G-protein coupled receptor 4-like;aa protein
-22472777;35782;38093174;38103175;Random;probable G-protein coupled receptor B0563.6;immune system
-22473041;35783;10892860;10902861;Random;ubiquitin ligase;ubiquitin
-22473715;35783;312519;322520;high gene expression;calmodulin-like protein 12;aa protein
-22473945;35783;58507564;58517565;Meng;Elongation factor 1-alpha;EF
-22474134;35783;7981517;7991518;Meng; Sodium channel protein;ion/water balance
-22474586;35780;24817029;24827030;Meng;Pyrroline-5-carboxylate reductase 1, mitochondrial;FAA metabolism
-22475409;35783;280607;290608;high gene expression;ubiquitin-associated protein 1-like;ubiquitin
-22475569;35780;11058246;11068247;She and Meng;Potassium voltage-gated channel protein Shaker ;ion/water balance
-22475843;35783;29479527;29489528;high gene expression;calmodulin-like protein 12;aa protein
-22475896;35783;9732294;9742295;Meng;Glutamate dehydrogenase ;FAA metabolism
-22476633;35783;27043620;27053621;high gene expression;G-protein coupled receptor;immune system
-22476912;35783;4817973;4827974;high gene expression;cytochrome P450;chemical defense
-22477215;35780;23897836;23907837;high Fst and gene expression;insulin-like growth factor-binding protein complex acid labile subunit;growth factor
-22477222;35783;38620287;38630288;high Fst and gene expression;uncharacterized LOC111130317, transcript variant X2;uncharacterized
-22477495;35783;48179498;48189499;high Fst;phospholipase D3-like;fatty acid hydrolysis
-22477509;35783;42602388;42612389;She 2018;Glutathione peroxidase;ROS-related
-22478000;35783;22121129;22131130;high Fst;peptidylglycine alpha-hydroxylating monooxygenase-like;ROS-related
-22478290;35783;17046713;17056714;Meng;Arginase;FAA metabolism
-22478344;35783;271876;281877;Meng;Elongation factor 1-alpha;EF
-22479437;35783;12366208;12376209;high Fst;cytochrome P450 4F4-like;chemical defense
-22480006;35784;16464120;16474121;She and Meng;Taurine Transporter;ion/water balance
-22480141;35784;37199564;37209565;high Fst and gene expression;uncharacterized LOC111132339;uncharacterized
-22480648;35784;69825388;69835389;high gene expression;oxidation-reduction process;oxidation-reduction process
-22480765;35784;72252700;72262701;high Fst and gene expression;trimethyllysine dioxygenase, mitochondrial-like, transcript variant X3;uncharacterized
-22480821;35784;10844049;10854050;Meng;Glycine dehydrogenase [decarboxylating], mitochondrial;FAA metabolism
-22481694;35784;2080421;2090422;high gene expression;proline-rich proteoglycan 2-like;proteolysis
-22482159;35784;21967692;21977693;Meng; Small conductance calcium-activated potassium channel protein 2 ;ion/water balance
-22483029;35780;63553588;63563589;high gene expression;cytochrome P450;chemical defense
-22483345;35780;58669838;58679839;Random;glycine rice cell wall structured protein;aa protein
-22483747;35784;40493885;40503886;high gene expression;sodium and chloride dependent glycine transporter;ion/water balance
-22484654;35780;27742622;27752623;Meng;Aldehyde dehydrogenase family 3 member B1 ;FAA metabolism
-22484786;35784;51325454;51335455;high Fst and gene expression;protein polyglycylase TTLL10-like, transcript variant X6;uncharacterized
-22484795;35784;51226847;51236848;high Fst and gene expression;solute carrier family 2, facilitated glucose transporter member 1-like;ion/water balance
-22485000;35784;44015177;44025178;She and Meng; Chloride channel protein ;ion/water balance
-22486585;35784;24567517;24577518;Random;proline dehydrogenase;FAA metabolism
-22486637;35784;35347818;35357819;Meng;Potassium voltage-gated channel subfamily C member 2;ion/water balance
-22486922;35784;96608075;96618076;Meng;Delta-1-pyrroline-5-carboxylate synthetase;FAA metabolism
-22487067;35784;42388188;42398189;high Fst and gene expression;uncharacterized LOC111136309, transcript variant X1;uncharacterized
-22487619;35784;62906375;62916376;high gene expression;proline-rich proteoglycan 2-like;proteolysis
-22487821;35784;6560220;6570221;high Fst;polycystic kidney disease protein 1-like 2;immune system
-22487945;35784;4136192;4146193;Meng;Spermidine synthase;FAA metabolism
-22488834;35780;36225848;36235849;Meng;Heat shock protein beta-1 ;chemical defense
-22489065;35784;75923609;75933610;She 2018;Cytochrome P450 1A2;chemical defense
-22489168;35784;85337878;85347879;high gene expression ;cytochrome P450;chemical defense
-22490241;35784;7167403;7177404;Meng;Cysteine sulfinic acid decarboxylase;FAA metabolism
+Gene	Chromosome_scaffold	Chromosome	Start_position	End_position	Source	Function	Functional_Grouping
+22430393	35784	5	6221600	6231601	high gene expression and blast to Meng	cysteine sulfinic acid decarboxylase-like	FAA metabolism
+22430406	35784	5	56923836	56933837	high Fst	G-protein coupled receptor 157-like, transcript variant X3	immune system
+22430468	35784	5	25158680	25168681	Random	Sodium & CL glycine transporter	ion/water balance
+22430824	35785	6	42584114	42594115	high Fst and gene expression	E3 ubiquitin-protein ligase TRIM33-like	ubiquitin
+22430888	35785	6	14129802	14139803	She 2018	Heat shock 70 kDa protein 12A	chemical defense
+22431296	35785	6	8384398	8394399	She 2018	Baculoviral IAP repeat-containing protein 3	immune system
+22431333	35780	1	2834337	2844338	high Fst and gene expression	protein FAM124A-like	uncharacterized
+22431880	35785	6	17653961	17663962	Random	proteasomal ATPase	proteolysis
+22431904	35785	6	21044564	21054565	Random	cation transporter	ion/water balance
+22431981	35785	6	3206384	3216385	high gene expression	proline -rich transmembrane protein	ion/water balance
+22432300	35785	6	15028989	15038990	She 2018	Solute carrier family 22 member 13	ion/water balance
+22433588	35785	6	29278817	29288818	Random	serine/theronine kinase	FAA metabolism
+22434054	35785	6	34376044	34386045	high gene expression	laccase-like	ROS-related
+22434109	35785	6	34365229	34375230	high gene expression	laccase-like	ROS-related
+22434541	35785	6	43680163	43690164	high gene expression	putative cytochrome P450	chemical defense
+22434694	35785	6	23852095	23862096	Random	ubiquitin ligase	ubiquitin
+22434894	35785	6	33563405	33573406	She and Meng	Aquaporin-2 	ion/water balance
+22434918	35785	6	32694243	32704244	She 2018	Heat shock 70 kDa protein 12A	chemical defense
+22434940	35785	6	3379820	3389821	high gene expression	putative cytochrome P450	chemical defense
+22435092	35786	7	15603975	15613976	She 2018	Glutathione peroxidase	ROS-related
+22436272	35786	7	2664454	2674455	Random	leucine rich repeat containing G-protein coupled receptor	immune system
+22436490	35786	7	39012421	39022422	Random	basic phospholipase A2 3-like%2C transcript variant X2	fatty acid hydrolysis
+22436553	35786	7	39691593	39701594	Random	phospholipase D1-like%2C transcript variant X6	fatty acid hydrolysis
+22436563	35786	7	46228131	46238132	Random	phospholipase D1-like%2C transcript variant X6	fatty acid hydrolysis
+22436694	35786	7	31749933	31759934	She 2018	Stress-induced protein 1 	chemical defense
+22436805	35786	7	50605423	50615424	high gene expression	elongation-factor 2-like	EF
+22436855	35786	7	8844291	8854292	Random	ubiquinene biosynthesis	ubiquitin
+22437155	35780	1	30875591	30885592	She and Meng	Aquaporin-2 	ion/water balance
+22438566	35780	1	31451787	31461788	She 2018	Complement C1q-like protein 4	immune system
+22439003	35786	7	37047098	37057099	Random	glycine N-acyltransferase-like%2C transcript variant X3	aa protein
+22439132	35786	7	24933377	24943378	Random	allene oxide synthase-lipoxygenase protein-like	uncharacterized
+22439749	35786	7	29139118	29149119	She 2018	Stress-induced protein 1 	chemical defense
+22440183	35787	8	69710395	69720396	blast to Meng	Voltage-gated potassium channel subunit beta-2	ion/water balance
+22440622	35780	1	17774204	17784205	She and Meng	Ornithine aminotransferase, mitochondrial	FAA metabolism
+22441293	35787	8	34869703	34879704	Random	aminotransferase	FAA metabolism
+22441408	35787	8	7989833	7999834	Random	proline-rich protein 2-like	aa protein
+22442553	35787	8	63305749	63315750	Random	proline-rich protein 2-like	aa protein
+22442587	35787	8	43806628	43816629	Random	sodium-dependent transporter	ion/water balance
+22443236	35780	1	47923901	47933902	Random	phosphatidylinositol-gylcan phospholipase	fatty acid hydrolysis
+22443320	35787	8	21026380	21036381	blast to Meng	Alanine aminotransferase 2 	FAA metabolism
+22443787	35787	8	671194	681195	Random	sodium-dependent transporter	ion/water balance
+22444711	35787	8	18156278	18166279	high Fst	phospholipase A2 inhibitor-like	fatty acid hydrolysis
+22445237	35787	8	50488369	50498370	She 2018	Apoptosis inhibitor IAP	immune system
+22445527	35787	8	17387790	17397791	She 2018	Complement C1q-like protein 3	immune system
+22446053	35787	8	57201142	57211143	high gene expression and She	Cytochrome P450 1A2	chemical defense
+22446194	35787	8	7281790	7291791	Random	G-protein coupled receptor 84-like	immune system
+22446304	35787	8	34878005	34888006	Random	G-protein coupled receptor 84-like	immune system
+22446487	35787	8	29542105	29552106	She 2018	Complement C1q tumor necrosis factor-related protein 3	immune system
+22447067	35787	8	52042449	52052450	She 2018	Cytochrome P450 3A9	chemical defense
+22448581	35788	9	52327885	52337886	Random	trans-L-3-hydroxyproline dehydratase-like	FAA metabolism
+22449029	35788	9	18525440	18535441	Random	glycine-rich cell wall structural protein 1.0-like	aa protein
+22449286	35780	1	3397988	3407989	Random	G-protein coupled receptor	immune system
+22449816	35788	9	14463404	14473405	high gene expression and Fst	uncharacterized LOC111112363	uncharacterized
+22450164	35788	9	8380057	8390058	Random	proline-rich protein 36-like	aa protein
+22450705	35788	9	95582491	95592492	She 2018	Scavenger receptor class F member 2 	immune system
+22450779	35780	1	39895392	39905393	high gene expression	proteolysis	proteolysis
+22450804	35788	9	76639935	76649936	blast to Meng	Aquaporin 	ion/water balance
+22451203	35788	9	45459086	45469087	She and Meng	Ornithine aminotransferase, mitochondrial	FAA metabolism
+22451612	35788	9	24576683	24586684	She 2018	Scavenger receptor class F member 2 	immune system
+22451937	35788	9	24598579	24608580	She 2018	Scavenger receptor class F member 2 	immune system
+22452045	35788	9	33862774	33872775	She 2018	Scavenger receptor class F member 2 	immune system
+22452319	35780	1	29419435	29429436	high Fst	mdm2-binding protein-like	immune system
+22452419	35788	9	73442410	73452411	high Fst	uncharacterized LOC111114130	uncharacterized
+22452520	35788	9	85998475	86008476	She 2018	Extracellular superoxide dismutase [Cu-Zn]	ROS-related
+22452549	35780	1	8088369	8098370	blast to Meng	Serine hydroxymethyltransferase	FAA metabolism
+22454252	35788	9	14941063	14951064	high gene expression	laccase-like	ROS-related
+22454361	35788	9	12099418	12109419	Random	glycine-rich cell wall structural protein 1.8-like	aa protein
+22454425	35788	9	72577670	72587671	blast to Meng	Aldehyde dehydrogenase family 3 member B1 	FAA metabolism
+22454561	35788	9	64949689	64959690	high gene expression	glycine tRNA-ligase like	uncharacterized
+22454898	35788	9	16682864	16692865	high gene expression	cytochrome P450	chemical defense
+22455052	35788	9	36948967	36958968	high gene expression	phosphoserine aminotransferase-like	FAA metabolism
+22455316	35789	10	13684351	13694352	Random	uncharacterized metal-dependent hydrolase YcfH-like	uncharacterized
+22455366	35789	10	16111570	16121571	She 2018	Apoptosis inhibitor IAP	immune system
+22455398	35789	10	18102920	18112921	Random	proline-%2C glutamic acid- and leucine-rich protein 1-like	aa protein
+22455638	35789	10	26386906	26396907	Random	cation ion channel	ion/water balance
+22455778	35789	10	11054652	11064653	Random	receptor-type tyrosine-protein phosphatase mu-like%2C transcript variant X2	FAA metabolism
+22455865	35780	1	37909595	37919596	high gene expression	sodium dependent proline transporter	ion/water balance
+22455926	35789	10	28645343	28655344	Random	cation channel	ion/water balance
+22456218	35789	10	697427	707428	She 2018	Apoptosis inhibitor IAP	immune system
+22456272	35789	10	3175740	3185741	Random	G-protein coupled receptor daf-37-like	immune system
+22456387	35789	10	23377468	23387469	high Fst and gene expression	uncharacterized LOC111117323, transcript variant X2	uncharacterized
+22456689	35789	10	8195106	8205107	Random	cytochrome P450 2C8-like%2C transcript variant X1	chemical defense
+22457334	35781	2	45783753	45793754	high Fst and gene expression	uncharacterized LOC111118044	uncharacterized
+22457562	35781	2	8426234	8436235	Random	gluthathione peroxidase	ROS-related
+22458334	35781	2	43575473	43585474	She 2018	Glutathione peroxidase	ROS-related
+22459209							
+22460042	35781	2	4069876	4079877	high Fst and gene expression	protein FAM124A-like	uncharacterized
+22460202	35781	2	13485506	13495507	Random	glycine dehydrogenase	FAA metabolism
+22460685	35781	2	34647418	34657419	high gene expression	phospholipase B-like	fatty acid hydrolysis
+22460911	35781	2	22580073	22590074	Random	glutathione peroxidase-like	ROS-related
+22462887	35781	2	29855615	29865616	She 2018	Amino acid transporter	ion/water balance
+22463410	35781	2	48626839	48636840	high gene expression	hydroxymethyltransferase, cytosolic-like	ion/water balance
+22463458	35781	2	60555776	60565777	high gene expression	 cytochrome P450	chemical defense
+22464577	35782	3	19531518	19541519	high Fst and gene expression	stimulated by retinoic acid gene 6 protein-like, transcript variant X1	uncharacterized
+22464888	35782	3	71307278	71317279	Meng	XM: sodium- and chloride-dependent glycine transporter	ion/water balance
+22464985	35782	3	72893109	72903110	She and Meng	XM: sodium-dependent proline transporter-like	ion/water balance
+22465298	35782	3	6255698	6265699	high Fst	putative RNA polymerase II subunit B1 CTD phosphatase RPAP2, transcript variant X2	RNA polymerase
+22466570	35782	3	49809887	49819888	She 2018	Apoptosis 1 inhibitor	immune system
+22467005	35782	3	25511603	25521604	high Fst	uncharacterized LOC111124140	uncharacterized
+22468365	35782	3	49474186	49484187	high gene expression	sodium and chloride dependent glycine transporter	ion/water balance
+22468800	35782	3	64364686	64374687	high Fst and gene expression	tetraspanin-9-like	ion/water balance
+22468985	35782	3	54821045	54831046	high Fst and gene expression	senecionine N-oxygenase-like, transcript variant X2	ROS-related
+22469890	35782	3	63587069	63597070	high Fst and gene expression	uncharacterized LOC111125771, transcript variant X4	uncharacterized
+22470031	35782	3	24961627	24971628	high gene expression and Meng	carnosine biosynthetic process	FAA metabolism
+22470155	35782	3	12730301	12740302	Random	laccase-like	ROS-related
+22470793	35782	3	54741285	54751286	She 2018	Heat shock 70 kDa protein 12A	chemical defense
+22471374	35782	3	32284161	32294162	high gene expression	 leucine-rich repeat-containing G-protein coupled receptor 4-like	aa protein
+22472777	35782	3	38093174	38103175	Random	probable G-protein coupled receptor B0563.6	immune system
+22473041	35783	4	10892860	10902861	Random	ubiquitin ligase	ubiquitin
+22473715	35783	4	312519	322520	high gene expression	calmodulin-like protein 12	aa protein
+22473945	35783	4	58507564	58517565	Meng	Elongation factor 1-alpha	EF
+22474134	35783	4	7981517	7991518	Meng	 Sodium channel protein	ion/water balance
+22474586	35780	1	24817029	24827030	Meng	Pyrroline-5-carboxylate reductase 1, mitochondrial	FAA metabolism
+22475409	35783	4	280607	290608	high gene expression	ubiquitin-associated protein 1-like	ubiquitin
+22475569	35780	1	11058246	11068247	She and Meng	Potassium voltage-gated channel protein Shaker 	ion/water balance
+22475843	35783	4	29479527	29489528	high gene expression	calmodulin-like protein 12	aa protein
+22475896	35783	4	9732294	9742295	Meng	Glutamate dehydrogenase 	FAA metabolism
+22476633	35783	4	27043620	27053621	high gene expression	G-protein coupled receptor	immune system
+22476912	35783	4	4817973	4827974	high gene expression	cytochrome P450	chemical defense
+22477215	35780	1	23897836	23907837	high Fst and gene expression	insulin-like growth factor-binding protein complex acid labile subunit	growth factor
+22477222	35783	4	38620287	38630288	high Fst and gene expression	uncharacterized LOC111130317, transcript variant X2	uncharacterized
+22477495	35783	4	48179498	48189499	high Fst	phospholipase D3-like	fatty acid hydrolysis
+22477509	35783	4	42602388	42612389	She 2018	Glutathione peroxidase	ROS-related
+22478000	35783	4	22121129	22131130	high Fst	peptidylglycine alpha-hydroxylating monooxygenase-like	ROS-related
+22478290	35783	4	17046713	17056714	Meng	Arginase	FAA metabolism
+22478344	35783	4	271876	281877	Meng	Elongation factor 1-alpha	EF
+22479437	35783	4	12366208	12376209	high Fst	cytochrome P450 4F4-like	chemical defense
+22480006	35784	5	16464120	16474121	She and Meng	Taurine Transporter	ion/water balance
+22480141	35784	5	37199564	37209565	high Fst and gene expression	uncharacterized LOC111132339	uncharacterized
+22480648	35784	5	69825388	69835389	high gene expression	oxidation-reduction process	oxidation-reduction process
+22480765	35784	5	72252700	72262701	high Fst and gene expression	trimethyllysine dioxygenase, mitochondrial-like, transcript variant X3	uncharacterized
+22480821	35784	5	10844049	10854050	Meng	Glycine dehydrogenase [decarboxylating], mitochondrial	FAA metabolism
+22481694	35784	5	2080421	2090422	high gene expression	proline-rich proteoglycan 2-like	proteolysis
+22482159	35784	5	21967692	21977693	Meng	 Small conductance calcium-activated potassium channel protein 2 	ion/water balance
+22483029	35780	1	63553588	63563589	high gene expression	cytochrome P450	chemical defense
+22483345	35780	1	58669838	58679839	Random	glycine rice cell wall structured protein	aa protein
+22483747	35784	5	40493885	40503886	high gene expression	sodium and chloride dependent glycine transporter	ion/water balance
+22484654	35780	1	27742622	27752623	Meng	Aldehyde dehydrogenase family 3 member B1 	FAA metabolism
+22484786	35784	5	51325454	51335455	high Fst and gene expression	protein polyglycylase TTLL10-like, transcript variant X6	uncharacterized
+22484795	35784	5	51226847	51236848	high Fst and gene expression	solute carrier family 2, facilitated glucose transporter member 1-like	ion/water balance
+22485000	35784	5	44015177	44025178	She and Meng	 Chloride channel protein 	ion/water balance
+22486585	35784	5	24567517	24577518	Random	proline dehydrogenase	FAA metabolism
+22486637	35784	5	35347818	35357819	Meng	Potassium voltage-gated channel subfamily C member 2	ion/water balance
+22486922	35784	5	96608075	96618076	Meng	Delta-1-pyrroline-5-carboxylate synthetase	FAA metabolism
+22487067	35784	5	42388188	42398189	high Fst and gene expression	uncharacterized LOC111136309, transcript variant X1	uncharacterized
+22487619	35784	5	62906375	62916376	high gene expression	proline-rich proteoglycan 2-like	proteolysis
+22487821	35784	5	6560220	6570221	high Fst	polycystic kidney disease protein 1-like 2	immune system
+22487945	35784	5	4136192	4146193	Meng	Spermidine synthase	FAA metabolism
+22488834	35780	1	36225848	36235849	Meng	Heat shock protein beta-1 	chemical defense
+22489065	35784	5	75923609	75933610	She 2018	Cytochrome P450 1A2	chemical defense
+22489168	35784	5	85337878	85347879	high gene expression 	cytochrome P450	chemical defense
+22490241	35784	5	7167403	7177404	Meng	Cysteine sulfinic acid decarboxylase	FAA metabolism
