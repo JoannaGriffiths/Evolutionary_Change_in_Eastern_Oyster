@@ -145,4 +145,5 @@ distances$Sig <- as.numeric(distances$Sig)
 summary(aov(lm(Distance ~ Sig, data = distances))) #not sig
 summary(aov(lm(Distance ~ Pop, data = distances))) #not sig
 summary(aov(lm(Distance ~ Salinity, data = distances))) #not significant
+summary(aov(lm(Distance ~ Survival, data = distances))) #not significant
 
