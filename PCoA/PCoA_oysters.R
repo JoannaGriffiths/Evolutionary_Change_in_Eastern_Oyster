@@ -94,14 +94,14 @@ sapply(treatment, class)
 
 larvae.dds.pcoa=pcoa(vegdist(t((larvae)),method="manhattan")/1000) 
 larvae.scores=larvae.dds.pcoa$vectors
-percent.larvae <- dds.pcoa$values$Eigenvalues
+percent.larvae <- larvae.dds.pcoa$values$Eigenvalues
 percent.larvae / sum(percent.larvae) #percent for each axes
 
 grDevices::windows()
 plot(larvae.scores[,1], larvae.scores[,2],  
      col=c('gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2', 'skyblue2'), 
      pch = c(19, 1, 19, 1, 19, 1, 19, 1, 19, 1, 19, 1, 19, 1, 13, 19, 1, 19, 1, 19, 1),
-     xlab = "PC1 (18.3%)", ylab = "PC2 (11.1%)", cex=1.5)
+     xlab = "PC1 (22.5%)", ylab = "PC2 (14.0%)", cex=1.5)
 text(larvae.scores[,1], larvae.scores[,2], colnames( larvae ), pos=3, cex=0.7)
 segments(x0 = larvae.scores[1,1], y0 = larvae.scores[1,2], x1 = larvae.scores[2,1], y1 = larvae.scores[2,2], col = "black") #SL1SE 
 segments(x0 = larvae.scores[3,1], y0 = larvae.scores[3,2], x1 = larvae.scores[4,1], y1 = larvae.scores[4,2], col = "black") #SL1SE 
